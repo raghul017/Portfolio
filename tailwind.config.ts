@@ -100,6 +100,18 @@ export default {
 				'blink-caret': {
 					'0%, 100%': { borderColor: 'transparent' },
 					'50%': { borderColor: 'black' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.4)' },
+					'50%': { boxShadow: '0 0 15px rgba(59, 130, 246, 0.7)' }
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
@@ -108,9 +120,13 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
 				'typing': 'typing 3.5s steps(40, end)',
-				'blink-caret': 'blink-caret .75s step-end infinite'
+				'blink-caret': 'blink-caret .75s step-end infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 20s linear infinite'
 			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 interface Project {
   id: number;
@@ -57,67 +58,110 @@ const projects: Project[] = [
 
 const ProjectsSection: React.FC = () => {
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <motion.section 
+      id="projects" 
+      className="py-20 bg-accent/10"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container">
-        <h2 className="text-3xl font-bold mb-8">
+        <motion.h2 
+          className="text-3xl font-bold mb-8"
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
           Projects
-        </h2>
+        </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <Card key={project.id} className="project-card overflow-hidden flex flex-col">
-              <CardHeader className="pb-2">
-                <div className="flex justify-between items-start">
-                  <div className="p-3 bg-primary/5 rounded-lg mb-3">
-                    {project.icon}
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="project-card overflow-hidden flex flex-col h-full">
+                <CardHeader className="pb-2">
+                  <div className="flex justify-between items-start">
+                    <motion.div 
+                      className="p-3 bg-primary/10 rounded-lg mb-3"
+                      whileHover={{ rotate: [0, 5, -5, 0], transition: { duration: 0.5 } }}
+                    >
+                      {project.icon}
+                    </motion.div>
+                    {project.githubUrl && (
+                      <motion.a 
+                        href={project.githubUrl} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="text-muted-foreground hover:text-primary"
+                        aria-label="GitHub repository"
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Github className="h-5 w-5" />
+                      </motion.a>
+                    )}
                   </div>
-                  {project.githubUrl && (
-                    <a 
-                      href={project.githubUrl} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="text-muted-foreground hover:text-primary"
-                      aria-label="GitHub repository"
+                  <CardTitle className="text-xl">{project.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p className="text-muted-foreground mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {project.technologies.map((tech) => (
+                      <motion.div
+                        key={tech}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        <Badge variant="outline" className="bg-secondary/30">
+                          {tech}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                </CardContent>
+                {project.demoUrl && (
+                  <CardFooter>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="w-full"
                     >
-                      <Github className="h-5 w-5" />
-                    </a>
-                  )}
-                </div>
-                <CardTitle className="text-xl">{project.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-muted-foreground mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="outline" className="bg-secondary/50">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-              {project.demoUrl && (
-                <CardFooter>
-                  <Button 
-                    variant="outline" 
-                    className="w-full gap-2"
-                    asChild
-                  >
-                    <a 
-                      href={project.demoUrl} 
-                      target="_blank" 
-                      rel="noreferrer"
-                    >
-                      <span>View Project</span>
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </CardFooter>
-              )}
-            </Card>
+                      <Button 
+                        variant="outline" 
+                        className="w-full gap-2 hover:bg-primary hover:text-primary-foreground group"
+                        asChild
+                      >
+                        <a 
+                          href={project.demoUrl} 
+                          target="_blank" 
+                          rel="noreferrer"
+                        >
+                          <span>View Project</span>
+                          <motion.div
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ repeat: Infinity, duration: 1.5 }}
+                          >
+                            <ArrowUpRight className="h-4 w-4" />
+                          </motion.div>
+                        </a>
+                      </Button>
+                    </motion.div>
+                  </CardFooter>
+                )}
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

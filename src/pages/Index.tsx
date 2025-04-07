@@ -9,6 +9,7 @@ import AchievementsSection from "@/components/AchievementsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const Index: React.FC = () => {
   const { toast } = useToast();
@@ -21,17 +22,28 @@ const Index: React.FC = () => {
     });
   }, [toast]);
 
+  // Animation variants for page sections
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        duration: 0.6
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
+      <motion.main initial="hidden" animate="visible" variants={sectionVariants}>
         <HeroSection />
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
         <AchievementsSection />
         <ContactSection />
-      </main>
+      </motion.main>
       <Footer />
     </div>
   );
