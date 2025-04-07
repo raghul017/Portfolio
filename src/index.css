@@ -7,25 +7,25 @@
 
 @layer base {
   :root {
-    --background: 230 15% 8%;
-    --foreground: 0 0% 98%;
-    --card: 230 15% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 230 15% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 221.2 83.2% 53.3%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 215 25% 18%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 215 25% 18%;
-    --muted-foreground: 215 5% 65%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 46%;
     --accent: 12 60% 45%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-    --border: 215 25% 18%;
-    --input: 215 25% 18%;
-    --ring: 142.4 71.8% 29.2%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
   }
 
   body {
@@ -35,7 +35,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
-    @apply font-medium tracking-tight;
+    @apply font-medium tracking-tight text-foreground;
   }
 
   code {
@@ -44,7 +44,7 @@
 }
 
 .highlight-gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700;
 }
 
 .section-divider {
@@ -68,8 +68,8 @@
 }
 
 .skill-badge {
-  @apply bg-secondary/50 text-secondary-foreground rounded-full px-3 py-1 text-xs font-medium;
-  @apply hover:bg-primary/80 hover:text-primary-foreground transition-colors duration-300;
+  @apply bg-secondary text-secondary-foreground rounded-full px-3 py-1 text-xs font-medium;
+  @apply hover:bg-primary hover:text-primary-foreground transition-colors duration-300;
   @apply transform transition-transform hover:scale-110 cursor-pointer;
 }
 
@@ -84,7 +84,7 @@
 
 /* Glass effect for card backgrounds */
 .glass-card {
-  @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl;
+  @apply backdrop-blur-lg bg-white/90 border border-white/20 shadow-sm rounded-xl;
 }
 
 /* Hover effects */

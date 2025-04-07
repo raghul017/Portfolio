@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="py-12 border-t border-border/40 bg-gradient-to-b from-background to-secondary/20">
+    <footer className="py-12 border-t border-border bg-gradient-to-b from-background to-secondary/40">
       <div className="container max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           <div className="reveal-on-scroll">
@@ -91,7 +91,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, children }) => (
     href={href}
     target={href.startsWith("http") ? "_blank" : undefined}
     rel={href.startsWith("http") ? "noreferrer" : undefined}
-    className="text-muted-foreground hover:text-primary bg-secondary/30 p-3 rounded-full hover:bg-primary/10 transition-colors"
+    className="text-muted-foreground hover:text-primary bg-secondary p-3 rounded-full hover:bg-primary/10 transition-colors"
     aria-label={label}
     whileHover={{ scale: 1.2 }}
     whileTap={{ scale: 0.9 }}

@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   return (
     <motion.header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-xl border-b border-border/40 shadow-sm" : "bg-transparent"
+        isScrolled ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm" : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

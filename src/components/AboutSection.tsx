@@ -5,7 +5,7 @@ import { Briefcase, Cpu, Database, Code } from "lucide-react";
 
 const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id="about" className="py-20 bg-secondary/30">
       <div className="container">
         <h2 className="text-3xl font-bold mb-8">
           About Me
@@ -34,28 +34,28 @@ const AboutSection: React.FC = () => {
               </h4>
               
               <div className="grid grid-cols-2 gap-4">
-                <Card className="border-data-blue/20 bg-transparent">
+                <Card className="border-data-blue/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
                     <Database className="h-5 w-5 text-data-blue" />
                     <span className="text-sm">Data Engineering</span>
                   </CardContent>
                 </Card>
                 
-                <Card className="border-data-purple/20 bg-transparent">
+                <Card className="border-data-purple/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
                     <Cpu className="h-5 w-5 text-data-purple" />
                     <span className="text-sm">AI Model Deployments</span>
                   </CardContent>
                 </Card>
                 
-                <Card className="border-data-teal/20 bg-transparent">
+                <Card className="border-data-teal/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
                     <Code className="h-5 w-5 text-data-teal" />
                     <span className="text-sm">ML Operations</span>
                   </CardContent>
                 </Card>
                 
-                <Card className="border-data-emerald/20 bg-transparent">
+                <Card className="border-data-emerald/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
                     <Briefcase className="h-5 w-5 text-data-emerald" />
                     <span className="text-sm">Scalable Analytics</span>
@@ -65,7 +65,7 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-lg shadow-sm p-6 border">
+          <div className="bg-card rounded-lg shadow-sm p-6 border">
             <h3 className="text-xl font-medium mb-4">
               Contact Information
             </h3>
