@@ -4,90 +4,77 @@ import { Mail, Linkedin, Github, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
-  const footerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-    }
-  };
-
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer className="py-12 border-t border-border/40 bg-gradient-to-b from-background to-secondary/20">
-      <div className="container">
-        <motion.div 
-          className="flex flex-col md:flex-row justify-between items-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={footerVariants}
-        >
-          <motion.div 
-            className="mb-8 md:mb-0"
-            variants={itemVariants}
-          >
-            <h3 className="text-2xl font-bold">Raghul R</h3>
-            <p className="text-muted-foreground text-sm mt-1">
-              AI & Data Engineering Professional
+      <div className="container max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+          <div className="reveal-on-scroll">
+            <h3 className="text-2xl font-bold mb-4">Raghul R</h3>
+            <p className="text-muted-foreground max-w-md">
+              AI & Data Engineering Professional focused on delivering impactful solutions through innovative technologies.
             </p>
-          </motion.div>
+          </div>
           
-          <motion.div 
-            className="flex gap-6"
-            variants={itemVariants}
-          >
-            <SocialIcon href="mailto:arraghul06@gmail.com" label="Email">
-              <Mail className="h-5 w-5" />
-            </SocialIcon>
-            <SocialIcon href="https://linkedin.com/in/raghul-r-b373a3264" label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
-            </SocialIcon>
-            <SocialIcon href="https://github.com/raghul06" label="GitHub">
-              <Github className="h-5 w-5" />
-            </SocialIcon>
-            <SocialIcon href="#resume" label="Resume">
-              <FileText className="h-5 w-5" />
-            </SocialIcon>
-          </motion.div>
-        </motion.div>
+          <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
+            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {['About', 'Skills', 'Projects', 'Achievements', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase()}`}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
+            <h3 className="text-lg font-bold mb-4">Connect</h3>
+            <div className="flex gap-4">
+              <SocialIcon href="mailto:arraghul06@gmail.com" label="Email">
+                <Mail className="h-5 w-5" />
+              </SocialIcon>
+              <SocialIcon href="https://linkedin.com/in/raghul-r-b373a3264" label="LinkedIn">
+                <Linkedin className="h-5 w-5" />
+              </SocialIcon>
+              <SocialIcon href="https://github.com/raghul06" label="GitHub">
+                <Github className="h-5 w-5" />
+              </SocialIcon>
+              <SocialIcon href="#resume" label="Resume">
+                <FileText className="h-5 w-5" />
+              </SocialIcon>
+            </div>
+            <div className="mt-4">
+              <p className="text-sm text-muted-foreground">
+                <span className="font-medium">Email:</span> arraghul06@gmail.com
+              </p>
+              <p className="text-sm text-muted-foreground">
+                <span className="font-medium">Phone:</span> +91-6379331551
+              </p>
+            </div>
+          </div>
+        </div>
         
-        <motion.div 
-          className="mt-12 pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground"
-          variants={itemVariants}
-        >
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-          >
-            © {new Date().getFullYear()} Raghul R. All rights reserved.
-          </motion.p>
+        <div className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} Raghul R. All rights reserved.
+          </p>
           
-          <motion.div
-            className="flex gap-6 mt-4 md:mt-0"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-          >
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              Privacy Policy
+            </a>
             <span className="text-border/60">•</span>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-          </motion.div>
-        </motion.div>
+            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              Terms of Service
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
@@ -104,7 +91,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, children }) => (
     href={href}
     target={href.startsWith("http") ? "_blank" : undefined}
     rel={href.startsWith("http") ? "noreferrer" : undefined}
-    className="text-muted-foreground hover:text-primary transition-colors p-3 rounded-full hover:bg-primary/10 border border-transparent hover:border-primary/30"
+    className="text-muted-foreground hover:text-primary bg-secondary/30 p-3 rounded-full hover:bg-primary/10 transition-colors"
     aria-label={label}
     whileHover={{ scale: 1.2 }}
     whileTap={{ scale: 0.9 }}

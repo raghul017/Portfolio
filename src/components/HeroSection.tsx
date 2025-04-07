@@ -1,12 +1,10 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -24,32 +22,26 @@ const HeroSection: React.FC = () => {
   };
   
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center pt-16 pb-24 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(50%_25%_at_50%_50%,rgba(59,130,246,0.12),rgba(0,0,0,0))]" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-3xl -z-10" />
-      </div>
-      
+    <section className="section min-h-screen flex flex-col justify-center items-center text-center pt-16 pb-24 overflow-hidden">
       <motion.div 
-        className="container max-w-4xl z-10"
+        className="section-inner max-w-4xl z-10"
         initial="hidden"
         animate="show"
         variants={container}
       >
         <motion.h2 
-          className="text-lg font-medium text-primary mb-2 flex items-center gap-2"
+          className="text-lg font-medium text-primary mb-2 flex items-center justify-center gap-2"
           variants={item}
         >
-          <span className="relative flex h-4 w-4">
+          <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-primary/80"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-primary/80"></span>
           </span>
-          Hey there, I'm
+          Hello, I'm
         </motion.h2>
         
         <motion.h1 
-          className="text-4xl md:text-7xl font-bold mb-6 tracking-tighter"
+          className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter"
           variants={item}
         >
           <span className="highlight-gradient-text">Raghul R</span>
@@ -59,11 +51,11 @@ const HeroSection: React.FC = () => {
           className="text-xl md:text-2xl font-medium text-foreground/90 mb-8"
           variants={item}
         >
-          Aspiring <span className="font-semibold relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary/30">AI & Data Engineering Professional</span>
+          AI & Data Engineering Professional
         </motion.h3>
         
         <motion.p 
-          className="text-muted-foreground max-w-2xl mb-12 text-lg"
+          className="text-muted-foreground max-w-2xl mx-auto mb-12 text-lg"
           variants={item}
         >
           With a strong foundation in data pipelines, model development, and machine learning operations, 
@@ -71,7 +63,7 @@ const HeroSection: React.FC = () => {
         </motion.p>
         
         <motion.div 
-          className="flex flex-col sm:flex-row gap-5"
+          className="flex flex-col sm:flex-row justify-center gap-5"
           variants={item}
         >
           <motion.div
@@ -80,22 +72,24 @@ const HeroSection: React.FC = () => {
           >
             <Button 
               className="gap-2 hover-glow group relative overflow-hidden px-8 py-6 text-base"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              asChild
             >
-              <span className="relative z-10">View My Work</span>
-              <motion.div 
-                className="absolute inset-0 bg-primary/80 z-0" 
-                initial={{ x: "-100%" }}
-                animate={{ x: isHovered ? "0%" : "-100%" }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.span
-                animate={{ x: isHovered ? 5 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ArrowRight className="h-4 w-4" />
-              </motion.span>
+              <a href="#projects">
+                <span className="relative z-10">My Projects</span>
+                <motion.div 
+                  className="absolute inset-0 bg-primary/90 z-0" 
+                  initial={{ y: "100%" }}
+                  whileHover={{ y: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span
+                  className="relative"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowRight className="h-4 w-4 ml-1" />
+                </motion.span>
+              </a>
             </Button>
           </motion.div>
           
@@ -103,7 +97,13 @@ const HeroSection: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button variant="outline" className="hover-glow px-8 py-6 text-base">Contact Me</Button>
+            <Button 
+              variant="outline" 
+              className="hover-glow px-8 py-6 text-base"
+              asChild
+            >
+              <a href="#contact">Contact Me</a>
+            </Button>
           </motion.div>
         </motion.div>
       </motion.div>

@@ -20,11 +20,30 @@ const Index: React.FC = () => {
       description: "Feel free to explore my projects and reach out.",
       duration: 5000,
     });
+    
+    // Add intersection observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+    
+    return () => {
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        observer.unobserve(el);
+      });
+    };
   }, [toast]);
 
   return (
     <AnimatePresence>
-      <div className="min-h-screen bg-background overflow-hidden">
+      <div className="min-h-screen bg-background overflow-x-hidden">
         <Header />
         <motion.main 
           initial="hidden" 
@@ -33,7 +52,7 @@ const Index: React.FC = () => {
         >
           {/* Background elements */}
           <div className="fixed inset-0 -z-10">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08),transparent_50%)]"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent_50%)]"></div>
             <div className="absolute top-1/2 left-3/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 right-1/2 w-[800px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
           </div>

@@ -99,11 +99,9 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, delay = 0 }) => (
     href={href} 
     className="nav-link"
     whileHover={{ scale: 1.1 }}
-    transition={{ type: "spring", stiffness: 400, damping: 10 }}
     initial={{ opacity: 0, y: -10 }}
     animate={{ opacity: 1, y: 0 }}
-    custom={delay}
-    transition={{ delay }}
+    transition={{ delay, type: "spring", stiffness: 400, damping: 10 }}
   >
     {children}
   </motion.a>
@@ -124,11 +122,9 @@ const HeaderIcon: React.FC<HeaderIconProps> = ({ href, label, children, delay = 
     aria-label={label}
     whileHover={{ scale: 1.2, rotate: 5 }}
     whileTap={{ scale: 0.9 }}
-    transition={{ type: "spring", stiffness: 400, damping: 10 }}
     initial={{ opacity: 0, y: -5 }}
     animate={{ opacity: 1, y: 0 }}
-    custom={delay}
-    transition={{ delay }}
+    transition={{ delay, type: "spring", stiffness: 400, damping: 10 }}
   >
     <Button 
       variant="ghost" 

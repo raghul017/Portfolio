@@ -3,34 +3,34 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 230 15% 8%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 230 15% 10%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 230 15% 10%;
     --popover-foreground: 0 0% 98%;
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 215 25% 18%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 5% 65%;
+    --accent: 12 60% 45%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
+    --border: 215 25% 18%;
+    --input: 215 25% 18%;
     --ring: 142.4 71.8% 29.2%;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -44,7 +44,7 @@
 }
 
 .highlight-gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-teal-400;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600;
 }
 
 .section-divider {
@@ -73,6 +73,15 @@
   @apply transform transition-transform hover:scale-110 cursor-pointer;
 }
 
+/* Section designs */
+.section {
+  @apply py-28 relative;
+}
+
+.section-inner {
+  @apply container mx-auto max-w-6xl px-6;
+}
+
 /* Glass effect for card backgrounds */
 .glass-card {
   @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl;
@@ -94,7 +103,7 @@
   @apply hover:-translate-y-1 hover:shadow-lg;
 }
 
-/* New animations */
+/* Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -129,3 +138,14 @@
   before:animate-pulse;
 }
 
+/* Modern scroll-based animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
