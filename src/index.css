@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -30,7 +30,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply font-medium tracking-tight;
   }
 
   code {
@@ -57,20 +62,20 @@
 }
 
 .project-card {
-  @apply border border-border bg-card p-6 rounded-lg transition-all duration-300;
-  @apply hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20 hover:scale-105;
-  @apply hover:bg-gradient-to-b from-card to-accent/50;
+  @apply border border-border bg-card/80 p-6 rounded-lg transition-all duration-500;
+  @apply hover:shadow-lg hover:shadow-primary/20 hover:border-primary/30;
+  @apply backdrop-blur-sm;
 }
 
 .skill-badge {
-  @apply bg-secondary text-secondary-foreground rounded-full px-3 py-1 text-xs font-medium;
-  @apply hover:bg-primary hover:text-primary-foreground transition-colors duration-200;
-  @apply hover:scale-110 transform transition-transform cursor-pointer;
+  @apply bg-secondary/50 text-secondary-foreground rounded-full px-3 py-1 text-xs font-medium;
+  @apply hover:bg-primary/80 hover:text-primary-foreground transition-colors duration-300;
+  @apply transform transition-transform hover:scale-110 cursor-pointer;
 }
 
 /* Glass effect for card backgrounds */
 .glass-card {
-  @apply backdrop-blur-lg bg-white/5 border border-white/10;
+  @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl;
 }
 
 /* Hover effects */
@@ -87,5 +92,40 @@
 .hover-lift {
   @apply transition-all duration-300;
   @apply hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* New animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: hsl(var(--primary) / 0.3); }
+  50% { border-color: hsl(var(--primary) / 0.8); }
+}
+
+@keyframes subtle-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-border {
+  animation: pulse-border 3s infinite;
+}
+
+.animate-subtle-rotate {
+  animation: subtle-rotate 20s linear infinite;
+}
+
+.glowing-border {
+  @apply relative overflow-hidden;
+  @apply before:absolute before:inset-0 before:rounded-lg before:p-[1px]
+  before:bg-gradient-to-r before:from-transparent before:via-primary/50 before:to-transparent
+  before:animate-pulse;
 }
 

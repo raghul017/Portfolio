@@ -60,24 +60,29 @@ const ProjectsSection: React.FC = () => {
   return (
     <motion.section 
       id="projects" 
-      className="py-20 bg-accent/10"
+      className="py-24 bg-accent/10 relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container">
-        <motion.h2 
-          className="text-3xl font-bold mb-8"
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+      <div className="absolute inset-0 bg-[radial-gradient(60%_20%_at_50%_80%,rgba(59,130,246,0.1),rgba(0,0,0,0))]" />
+      
+      <div className="container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-3 mb-16"
         >
-          Projects
-        </motion.h2>
+          <h2 className="text-3xl font-bold">Notable Projects</h2>
+          <p className="text-muted-foreground max-w-2xl">
+            A collection of projects showcasing my skills in data engineering, machine learning and analytics.
+          </p>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -86,12 +91,12 @@ const ProjectsSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="project-card overflow-hidden flex flex-col h-full">
+              <Card className="project-card overflow-hidden flex flex-col h-full border-border/40 bg-secondary/20">
                 <CardHeader className="pb-2">
                   <div className="flex justify-between items-start">
                     <motion.div 
-                      className="p-3 bg-primary/10 rounded-lg mb-3"
-                      whileHover={{ rotate: [0, 5, -5, 0], transition: { duration: 0.5 } }}
+                      className="p-4 bg-primary/5 rounded-xl mb-3"
+                      whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.5 } }}
                     >
                       {project.icon}
                     </motion.div>
@@ -100,7 +105,7 @@ const ProjectsSection: React.FC = () => {
                         href={project.githubUrl} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="text-muted-foreground hover:text-primary"
+                        className="text-muted-foreground hover:text-primary transition-colors"
                         aria-label="GitHub repository"
                         whileHover={{ scale: 1.2, rotate: 360 }}
                         transition={{ duration: 0.5 }}
@@ -109,10 +114,10 @@ const ProjectsSection: React.FC = () => {
                       </motion.a>
                     )}
                   </div>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
+                  <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
+                  <p className="text-muted-foreground mb-6">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {project.technologies.map((tech) => (
                       <motion.div
@@ -120,7 +125,7 @@ const ProjectsSection: React.FC = () => {
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
-                        <Badge variant="outline" className="bg-secondary/30">
+                        <Badge variant="outline" className="bg-secondary/30 hover:bg-primary/20">
                           {tech}
                         </Badge>
                       </motion.div>

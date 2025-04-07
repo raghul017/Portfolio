@@ -4,23 +4,50 @@ import { Mail, Linkedin, Github, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
+  const footerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+  };
+
   return (
-    <footer className="bg-secondary/50 py-8 border-t border-border">
+    <footer className="py-12 border-t border-border/40 bg-gradient-to-b from-background to-secondary/20">
       <div className="container">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <motion.div 
+          className="flex flex-col md:flex-row justify-between items-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={footerVariants}
+        >
           <motion.div 
-            className="mb-4 md:mb-0"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            className="mb-8 md:mb-0"
+            variants={itemVariants}
           >
-            <h3 className="text-xl font-bold">Raghul R</h3>
-            <p className="text-muted-foreground text-sm">
-              Data & AI Engineering Professional
+            <h3 className="text-2xl font-bold">Raghul R</h3>
+            <p className="text-muted-foreground text-sm mt-1">
+              AI & Data Engineering Professional
             </p>
           </motion.div>
           
-          <div className="flex gap-4">
+          <motion.div 
+            className="flex gap-6"
+            variants={itemVariants}
+          >
             <SocialIcon href="mailto:arraghul06@gmail.com" label="Email">
               <Mail className="h-5 w-5" />
             </SocialIcon>
@@ -33,17 +60,33 @@ const Footer: React.FC = () => {
             <SocialIcon href="#resume" label="Resume">
               <FileText className="h-5 w-5" />
             </SocialIcon>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
         <motion.div 
-          className="border-t border-border mt-6 pt-6 text-center text-sm text-muted-foreground"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          className="mt-12 pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground"
+          variants={itemVariants}
         >
-          <p>© {new Date().getFullYear()} Raghul R. All rights reserved.</p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+          >
+            © {new Date().getFullYear()} Raghul R. All rights reserved.
+          </motion.p>
+          
+          <motion.div
+            className="flex gap-6 mt-4 md:mt-0"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+          >
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <span className="text-border/60">•</span>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+          </motion.div>
         </motion.div>
       </div>
     </footer>
@@ -61,7 +104,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, children }) => (
     href={href}
     target={href.startsWith("http") ? "_blank" : undefined}
     rel={href.startsWith("http") ? "noreferrer" : undefined}
-    className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
+    className="text-muted-foreground hover:text-primary transition-colors p-3 rounded-full hover:bg-primary/10 border border-transparent hover:border-primary/30"
     aria-label={label}
     whileHover={{ scale: 1.2 }}
     whileTap={{ scale: 0.9 }}
