@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,6 +61,7 @@ const Header: React.FC = () => {
         </nav>
         
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <HeaderIcon href="mailto:arraghul06@gmail.com" label="Email" delay={0.1}>
             <Mail className="h-4 w-4" />
           </HeaderIcon>
