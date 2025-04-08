@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Award, Briefcase, Trophy } from "lucide-react";
+import { Award, Briefcase, Trophy, GraduationCap } from "lucide-react";
 import { 
   Card,
   CardContent,
@@ -16,6 +16,7 @@ interface Achievement {
   institution: string;
   description: string;
   icon: React.ReactNode;
+  link?: string;
 }
 
 const achievements: Achievement[] = [
@@ -39,6 +40,22 @@ const achievements: Achievement[] = [
     institution: "Futurense Technologies",
     description: "Successfully completed internship at Futurense Technologies, contributing to the 'This is US Pathway' program for data professionals.",
     icon: <Briefcase className="h-8 w-8 text-data-teal" />,
+  },
+  {
+    id: 4,
+    title: "Full Stack Web Development",
+    institution: "Harkirat Singh",
+    description: "Completed comprehensive full stack web development certification program.",
+    icon: <GraduationCap className="h-8 w-8 text-data-orange" />,
+    link: "https://app.100xdevs.com/certificate/verify/8O3N5V9C"
+  },
+  {
+    id: 5,
+    title: "The Complete Python Developer",
+    institution: "Udemy",
+    description: "Mastered Python development through a comprehensive certification program.",
+    icon: <GraduationCap className="h-8 w-8 text-data-green" />,
+    link: "https://ude.my/UC-55d7a7db-106f-48be-9927-70eb85e06e84"
   }
 ];
 
@@ -67,6 +84,16 @@ const AchievementsSection: React.FC = () => {
                 <p className="text-muted-foreground">
                   {achievement.description}
                 </p>
+                {achievement.link && (
+                  <a 
+                    href={achievement.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-primary hover:underline mt-2 inline-block"
+                  >
+                    View Certificate
+                  </a>
+                )}
               </CardContent>
             </Card>
           ))}

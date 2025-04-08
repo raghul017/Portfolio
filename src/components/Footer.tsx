@@ -39,10 +39,10 @@ const Footer: React.FC = () => {
               <SocialIcon href="mailto:arraghul06@gmail.com" label="Email">
                 <Mail className="h-5 w-5" />
               </SocialIcon>
-              <SocialIcon href="https://linkedin.com/in/raghul-ar" label="LinkedIn">
+              <SocialIcon href="https://www.linkedin.com/in/raghul-ar05" label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </SocialIcon>
-              <SocialIcon href="https://github.com/raghul06" label="GitHub">
+              <SocialIcon href="https://github.com/raghul017" label="GitHub">
                 <Github className="h-5 w-5" />
               </SocialIcon>
               <SocialIcon href="#about" label="Resume">
