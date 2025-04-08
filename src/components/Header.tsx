@@ -39,7 +39,7 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Raghul R
+              Raghul A. R.
             </motion.span>
             <motion.span 
               className="hidden sm:inline-block text-sm font-light text-muted-foreground"
@@ -47,13 +47,13 @@ const Header: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              | Data & AI Engineering
+              | Data Analyst
             </motion.span>
           </Link>
         </motion.div>
         
         <nav className="hidden md:flex items-center gap-8">
-          {['about', 'skills', 'projects', 'contact'].map((item, index) => (
+          {['about', 'skills', 'projects', 'achievements', 'contact'].map((item, index) => (
             <NavLink key={item} href={`#${item}`} delay={index * 0.1}>
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </NavLink>
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
           <HeaderIcon href="mailto:arraghul06@gmail.com" label="Email" delay={0.1}>
             <Mail className="h-4 w-4" />
           </HeaderIcon>
-          <HeaderIcon href="https://linkedin.com/in/raghul-r-b373a3264" label="LinkedIn" delay={0.2}>
+          <HeaderIcon href="https://linkedin.com/in/raghul-ar" label="LinkedIn" delay={0.2}>
             <Linkedin className="h-4 w-4" />
           </HeaderIcon>
           <HeaderIcon href="https://github.com/raghul06" label="GitHub" delay={0.3}>

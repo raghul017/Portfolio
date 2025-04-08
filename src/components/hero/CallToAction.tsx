@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 interface CallToActionProps {
   item: any; // Animation variant
@@ -11,7 +11,7 @@ interface CallToActionProps {
 const CallToAction: React.FC<CallToActionProps> = ({ item }) => {
   return (
     <motion.div 
-      className="flex flex-col sm:flex-row justify-start gap-5"
+      className="flex flex-col sm:flex-row justify-start gap-5 mt-10"
       variants={item}
     >
       <motion.div
@@ -47,10 +47,28 @@ const CallToAction: React.FC<CallToActionProps> = ({ item }) => {
       >
         <Button 
           variant="outline" 
-          className="hover-glow px-8 py-6 text-base"
+          className="hover-glow px-8 py-6 text-base gap-2"
           asChild
         >
-          <a href="#contact">Contact Me</a>
+          <a href="#contact">
+            <span>Contact Me</span>
+          </a>
+        </Button>
+      </motion.div>
+
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Button 
+          variant="ghost" 
+          className="hover-glow px-8 py-6 text-base gap-2"
+          asChild
+        >
+          <a href="#about">
+            <Download className="h-4 w-4 mr-1" />
+            <span>Resume</span>
+          </a>
         </Button>
       </motion.div>
     </motion.div>

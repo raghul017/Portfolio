@@ -4,10 +4,9 @@ import {
   ArrowUpRight, 
   Github,
   Eye, 
-  Cpu,
   MessageSquare,
   CheckSquare,
-  BarChart
+  Briefcase
 } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -27,31 +26,31 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "YOLO Object Detection Model",
-    description: "Developed an advanced object detection system using the YOLO algorithm with OpenCV to process and annotate real-time video frames. Achieved high detection accuracy for multiple objects simultaneously.",
+    title: "YOLO Object Detection",
+    description: "Developed an object detection system using YOLOv5 to recognize and classify real-world objects in images and video streams. Leveraged OpenCV and Python for preprocessing and real-time deployment.",
     icon: <Eye className="h-10 w-10 text-primary" />,
     technologies: ["Python", "YOLO", "OpenCV"],
     githubUrl: "https://github.com/raghul06"
   },
   {
     id: 2,
-    title: "Sentiment Analysis of Social Media Posts",
-    description: "Built an LSTM-based model to analyze sentiment polarity in social media text data. Preprocessed noisy textual data using NLP techniques and trained the model to identify positive, negative, and neutral sentiments.",
+    title: "Sentiment Analysis on Social Media Posts",
+    description: "Built an NLP model to classify sentiments in social media posts as positive, negative, or neutral. Employed text preprocessing, tokenization, and classification using Scikit-learn, Pandas, and NLTK.",
     icon: <MessageSquare className="h-10 w-10 text-primary" />,
-    technologies: ["Python", "TensorFlow", "LSTM", "NLP"]
+    technologies: ["Python", "Scikit-learn", "NLTK", "NLP"]
   },
   {
     id: 3,
-    title: "Task Flow Application",
-    description: "Developed a lightweight task management tool that allows users to add, update, and delete daily tasks. Created a user-friendly interface for seamless productivity and efficient task data storage.",
+    title: "TaskFlow – Task Management App",
+    description: "Created a full-stack web application to manage tasks with deadlines, tags, and status updates. Implemented user authentication, task sorting, and filtering functionalities.",
     icon: <CheckSquare className="h-10 w-10 text-primary" />,
-    technologies: ["Python", "Streamlit", "SQLite"]
+    technologies: ["React", "Node.js", "Express.js", "MongoDB"]
   },
   {
     id: 4,
-    title: "Futurense-USP Analytics",
-    description: "Conducted deep data analysis on Futurense USPs, leveraging data visualization tools to present insights. Created dashboards for strategic decision-making and analyzed trends for business strategies.",
-    icon: <BarChart className="h-10 w-10 text-primary" />,
+    title: "Futurense 'This is US Pathway' Project",
+    description: "Contributed to performance analytics and reporting for a US placement-focused upskilling initiative. Supported evaluation of student progress and training impact using data visualization tools.",
+    icon: <Briefcase className="h-10 w-10 text-primary" />,
     technologies: ["Python", "Excel", "Power BI"]
   }
 ];
@@ -69,7 +68,7 @@ const ProjectsSection: React.FC = () => {
           <h2 className="text-4xl font-bold">Projects</h2>
           <div className="h-1 w-12 bg-primary rounded-full"></div>
           <p className="text-muted-foreground max-w-2xl">
-            A collection of projects showcasing my skills in data engineering, machine learning and analytics.
+            A collection of projects showcasing my skills in data analysis, machine learning, and web development.
           </p>
         </div>
         

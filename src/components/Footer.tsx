@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
       <div className="container max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           <div className="reveal-on-scroll">
-            <h3 className="text-2xl font-bold mb-4">Raghul R</h3>
+            <h3 className="text-2xl font-bold mb-4">Raghul A. R.</h3>
             <p className="text-muted-foreground max-w-md">
-              AI & Data Engineering Professional focused on delivering impactful solutions through innovative technologies.
+              Data Analyst and AI enthusiast focusing on creating innovative solutions through data engineering and machine learning.
             </p>
           </div>
           
@@ -39,13 +39,13 @@ const Footer: React.FC = () => {
               <SocialIcon href="mailto:arraghul06@gmail.com" label="Email">
                 <Mail className="h-5 w-5" />
               </SocialIcon>
-              <SocialIcon href="https://linkedin.com/in/raghul-r-b373a3264" label="LinkedIn">
+              <SocialIcon href="https://linkedin.com/in/raghul-ar" label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </SocialIcon>
               <SocialIcon href="https://github.com/raghul06" label="GitHub">
                 <Github className="h-5 w-5" />
               </SocialIcon>
-              <SocialIcon href="#resume" label="Resume">
+              <SocialIcon href="#about" label="Resume">
                 <FileText className="h-5 w-5" />
               </SocialIcon>
             </div>
@@ -56,13 +56,16 @@ const Footer: React.FC = () => {
               <p className="text-sm text-muted-foreground">
                 <span className="font-medium">Phone:</span> +91-6379331551
               </p>
+              <p className="text-sm text-muted-foreground">
+                <span className="font-medium">Location:</span> Tamil Nadu, India
+              </p>
             </div>
           </div>
         </div>
         
         <div className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Raghul R. All rights reserved.
+            © {currentYear} Raghul A. R. All rights reserved.
           </p>
           
           <div className="flex gap-6 mt-4 md:mt-0">

@@ -42,7 +42,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ name, title, description }) =
       </motion.h3>
       
       <motion.p 
-        className="text-muted-foreground max-w-2xl mx-auto mb-12 text-lg"
+        className="text-muted-foreground max-w-2xl text-lg"
         variants={item}
       >
         {description}

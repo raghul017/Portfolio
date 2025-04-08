@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Award, Briefcase, Sparkles } from "lucide-react";
+import { Award, Briefcase, Trophy } from "lucide-react";
 import { 
   Card,
   CardContent,
@@ -21,30 +21,30 @@ interface Achievement {
 const achievements: Achievement[] = [
   {
     id: 1,
-    title: "Futurense Fellowship",
-    institution: "Futurense",
-    description: "Specialized program in Data Engineering, focusing on building scalable data pipelines and analytics solutions.",
-    icon: <Award className="h-8 w-8 text-data-blue" />,
+    title: "Winner – IIT Patna Tech Fest",
+    institution: "IIT Patna",
+    description: "Secured first place for presenting an innovative solution during a national-level technology competition.",
+    icon: <Trophy className="h-8 w-8 text-data-blue" />,
   },
   {
     id: 2,
-    title: "AI & ML Specialization",
-    institution: "Learning Institution",
-    description: "Comprehensive training in artificial intelligence and machine learning techniques for real-world applications.",
-    icon: <Briefcase className="h-8 w-8 text-data-purple" />,
+    title: "Winner – Smart India Hackathon (SIH) Round 1",
+    institution: "Smart India Hackathon",
+    description: "Qualified for the next round of SIH by designing a high-impact tech solution in response to a real-world problem statement.",
+    icon: <Award className="h-8 w-8 text-data-purple" />,
   },
   {
     id: 3,
-    title: "Public Speaking Champion",
-    institution: "College Fest",
-    description: "Recognized for exceptional communication skills and the ability to present complex technical concepts effectively.",
-    icon: <Sparkles className="h-8 w-8 text-data-teal" />,
+    title: "Data Analyst Intern",
+    institution: "Futurense Technologies",
+    description: "Successfully completed internship at Futurense Technologies, contributing to the 'This is US Pathway' program for data professionals.",
+    icon: <Briefcase className="h-8 w-8 text-data-teal" />,
   }
 ];
 
 const AchievementsSection: React.FC = () => {
   return (
-    <section className="py-20">
+    <section id="achievements" className="py-20">
       <div className="container">
         <h2 className="text-3xl font-bold mb-8">
           Achievements & Certifications

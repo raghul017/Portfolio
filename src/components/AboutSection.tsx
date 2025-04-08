@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Briefcase, Cpu, Database, Code } from "lucide-react";
+import { Briefcase, Calculator, ChartBar, Code, FileCode, GraduationCap } from "lucide-react";
 
 const AboutSection: React.FC = () => {
   return (
@@ -14,18 +14,19 @@ const AboutSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <h3 className="text-xl font-medium">
-              Data Engineering & AI Enthusiast
+              Data Analyst with a Passion for AI & Data Engineering
             </h3>
             
             <p className="text-muted-foreground">
-              I'm passionate about leveraging data and AI technologies to solve real-world problems. My journey 
-              in the tech world has equipped me with skills in building data pipelines, developing machine learning 
-              models, and implementing scalable analytics solutions.
+              I'm currently pursuing my B.Tech. in Computer Science and Engineering with a specialization in AI & Data Engineering 
+              at Lovely Professional University, expected to graduate in May 2026. My academic journey has equipped me with 
+              skills in data analysis, machine learning, and software development.
             </p>
             
             <p className="text-muted-foreground">
-              Currently focused on advancing my expertise in <span className="font-medium">Data Engineering</span>, 
-              <span className="font-medium"> AI Model Deployments</span>, and <span className="font-medium">Scalable Analytics</span>.
+              With hands-on experience as a Data Analyst Intern at Futurense Technologies, I've worked on real-world data 
+              projects, building dashboards and pipelines to track student performance and training outcomes. I'm passionate 
+              about applying AI and data engineering concepts to solve real-world problems.
             </p>
             
             <div className="pt-4">
@@ -36,29 +37,29 @@ const AboutSection: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <Card className="border-data-blue/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
-                    <Database className="h-5 w-5 text-data-blue" />
-                    <span className="text-sm">Data Engineering</span>
+                    <ChartBar className="h-5 w-5 text-data-blue" />
+                    <span className="text-sm">Data Analytics</span>
                   </CardContent>
                 </Card>
                 
                 <Card className="border-data-purple/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
-                    <Cpu className="h-5 w-5 text-data-purple" />
-                    <span className="text-sm">AI Model Deployments</span>
+                    <Calculator className="h-5 w-5 text-data-purple" />
+                    <span className="text-sm">Machine Learning</span>
                   </CardContent>
                 </Card>
                 
                 <Card className="border-data-teal/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
-                    <Code className="h-5 w-5 text-data-teal" />
-                    <span className="text-sm">ML Operations</span>
+                    <FileCode className="h-5 w-5 text-data-teal" />
+                    <span className="text-sm">Natural Language Processing</span>
                   </CardContent>
                 </Card>
                 
                 <Card className="border-data-emerald/20 shadow-sm">
                   <CardContent className="flex items-center gap-3 p-4">
-                    <Briefcase className="h-5 w-5 text-data-emerald" />
-                    <span className="text-sm">Scalable Analytics</span>
+                    <Code className="h-5 w-5 text-data-emerald" />
+                    <span className="text-sm">Full Stack Development</span>
                   </CardContent>
                 </Card>
               </div>
@@ -66,6 +67,34 @@ const AboutSection: React.FC = () => {
           </div>
           
           <div className="bg-card rounded-lg shadow-sm p-6 border">
+            <h3 className="text-xl font-medium mb-4">
+              Education & Details
+            </h3>
+            
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="bg-primary/10 p-2 rounded-full">
+                  <GraduationCap className="h-5 w-5 text-primary" />
+                </div>
+                <h4 className="text-lg font-medium">B.Tech. in Computer Science and Engineering</h4>
+              </div>
+              <p className="text-muted-foreground ml-12">AI & Data Engineering Specialization</p>
+              <p className="text-muted-foreground ml-12">Lovely Professional University | 2022 - 2026 (Expected)</p>
+            </div>
+            
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="bg-primary/10 p-2 rounded-full">
+                  <Briefcase className="h-5 w-5 text-primary" />
+                </div>
+                <h4 className="text-lg font-medium">Data Analyst Intern</h4>
+              </div>
+              <p className="text-muted-foreground ml-12">Futurense Technologies, Bangalore</p>
+              <p className="text-muted-foreground ml-12">June 2024 - August 2024</p>
+            </div>
+            
+            <div className="section-divider" />
+            
             <h3 className="text-xl font-medium mb-4">
               Contact Information
             </h3>
@@ -92,45 +121,10 @@ const AboutSection: React.FC = () => {
               </li>
               
               <li className="flex items-center gap-2">
-                <span className="font-medium w-20">LinkedIn:</span>
-                <a 
-                  href="https://linkedin.com/in/raghul-r-b373a3264" 
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  raghul-r-b373a3264
-                </a>
-              </li>
-              
-              <li className="flex items-center gap-2">
-                <span className="font-medium w-20">GitHub:</span>
-                <a 
-                  href="https://github.com/raghul06" 
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  raghul06
-                </a>
+                <span className="font-medium w-20">Location:</span>
+                <span className="text-foreground/80">Tamil Nadu, India</span>
               </li>
             </ul>
-            
-            <div className="section-divider" />
-            
-            <h3 className="text-xl font-medium mb-4">
-              Resume
-            </h3>
-            
-            <div id="resume" className="flex items-center justify-between">
-              <span>Download my complete resume</span>
-              <a 
-                href="#" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Download PDF
-              </a>
-            </div>
           </div>
         </div>
       </div>

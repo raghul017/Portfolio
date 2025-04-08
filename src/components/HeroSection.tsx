@@ -49,9 +49,10 @@ const HeroSection: React.FC = () => {
           variants={container}
         >
           <HeroContent 
-            name="Raghul R"
-            title="AI & Data Engineering Professional"
-            description="With a strong foundation in data pipelines, model development, and machine learning operations, I love solving real-world problems with innovative technologies."
+            name="Raghul A. R."
+            title="Data Analyst"
+            description="With a focus on AI and data engineering, I'm passionate about creating innovative 
+            data solutions and turning complex information into actionable insights."
           />
           
           <CallToAction item={item} />

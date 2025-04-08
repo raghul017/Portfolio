@@ -5,7 +5,8 @@ import {
   Database, 
   Brain, 
   Terminal, 
-  Users 
+  Users,
+  LineChart 
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -50,31 +51,37 @@ const SkillsSection: React.FC = () => {
           <SkillCategory 
             title="Programming Languages" 
             icon={<Code className="h-5 w-5 text-data-blue" />}
-            skills={["Python", "Java", "C", "SQL"]}
+            skills={["Python", "JavaScript", "SQL"]}
           />
           
           <SkillCategory 
-            title="Data Engineering" 
-            icon={<Database className="h-5 w-5 text-data-purple" />}
-            skills={["SQL", "MySQL", "Apache Kafka", "Power BI", "Tableau"]}
-          />
-          
-          <SkillCategory 
-            title="AI/ML" 
+            title="Libraries & Frameworks" 
             icon={<Brain className="h-5 w-5 text-data-indigo" />}
-            skills={["TensorFlow", "Keras", "OpenCV", "LSTM", "YOLO"]}
+            skills={["Pandas", "NumPy", "Scikit-learn", "NLTK", "OpenCV", "Matplotlib", "Seaborn", "TensorFlow"]}
           />
           
           <SkillCategory 
-            title="Tools & Frameworks" 
-            icon={<Terminal className="h-5 w-5 text-data-teal" />}
-            skills={["Docker", "Git", "Microsoft Excel", "NLP"]}
+            title="Web Technologies" 
+            icon={<Code className="h-5 w-5 text-data-teal" />}
+            skills={["React", "Node.js", "Express.js", "MongoDB", "HTML/CSS"]}
           />
           
           <SkillCategory 
-            title="Soft Skills" 
-            icon={<Users className="h-5 w-5 text-data-emerald" />}
-            skills={["Leadership", "Team Collaboration", "Public Speaking", "Presentation Skills"]}
+            title="Tools & Platforms" 
+            icon={<Terminal className="h-5 w-5 text-data-emerald" />}
+            skills={["Git", "VS Code", "Jupyter Notebook", "Postman", "Excel"]}
+          />
+          
+          <SkillCategory 
+            title="Database & Data Handling" 
+            icon={<Database className="h-5 w-5 text-data-purple" />}
+            skills={["MySQL", "MongoDB", "REST APIs"]}
+          />
+          
+          <SkillCategory 
+            title="Data Analytics & Visualization" 
+            icon={<LineChart className="h-5 w-5 text-data-blue" />}
+            skills={["Power BI", "Matplotlib", "Seaborn"]}
           />
         </div>
       </div>

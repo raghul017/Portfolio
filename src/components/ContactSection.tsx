@@ -22,7 +22,7 @@ const ContactSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
             <p className="text-lg mb-6">
-              I'm open to exciting opportunities in Data Engineering, AI Development, or Analytics roles.
+              I'm currently focusing on expanding my knowledge in data analytics, AI, and machine learning.
               Feel free to reach out for collaborations, discussions, or just a tech chat!
             </p>
             
@@ -59,11 +59,12 @@ const ContactSection: React.FC = () => {
             </div>
             
             <div>
-              <h3 className="font-medium text-xl mb-4">What's next?</h3>
+              <h3 className="font-medium text-xl mb-4">Career Goals</h3>
               <ul className="space-y-2 list-disc list-inside text-muted-foreground">
-                <li>Building end-to-end Data Pipelines</li>
-                <li>Writing technical blogs on AI & Data Engineering</li>
-                <li>Exploring MLOps for scalable AI deployments</li>
+                <li>Pursuing a Master's degree in AI/Data Science in the next few years</li>
+                <li>Exploring opportunities at top universities in Switzerland and the Netherlands</li>
+                <li>Growing expertise in Machine Learning and Data Engineering</li>
+                <li>Learning MLOps to improve AI model deployment and management</li>
               </ul>
             </div>
           </div>
