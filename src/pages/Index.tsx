@@ -13,6 +13,11 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Import refactored styles
+import "@/styles/base.css";
+import "@/styles/animations.css";
+import "@/styles/components.css";
+
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
