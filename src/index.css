@@ -3,80 +3,82 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 46%;
-    --accent: 12 60% 45%;
-    --accent-foreground: 222 47% 11%;
+    --background: 36 33% 97%;
+    --foreground: 240 10% 4%;
+    --card: 36 33% 97%;
+    --card-foreground: 240 10% 4%;
+    --popover: 36 33% 97%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 240 10% 4%;
+    --primary-foreground: 36 33% 97%;
+    --secondary: 38 30% 96%;
+    --secondary-foreground: 240 10% 4%;
+    --muted: 38 30% 96%;
+    --muted-foreground: 240 10% 30%;
+    --accent: 36 40% 90%;
+    --accent-foreground: 240 10% 4%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --destructive-foreground: 36 33% 97%;
+    --border: 38 10% 85%;
+    --input: 38 10% 85%;
+    --ring: 240 10% 4%;
   }
   
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217 20% 24%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 20% 24%;
-    --muted-foreground: 215 16% 70%;
-    --accent: 12 60% 65%;
-    --accent-foreground: 210 40% 98%;
+    --background: 240 10% 4%;
+    --foreground: 36 33% 97%;
+    --card: 240 10% 4%;
+    --card-foreground: 36 33% 97%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 36 33% 97%;
+    --primary: 36 33% 97%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 36 33% 97%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 36 20% 80%;
+    --accent: 240 6% 10%;
+    --accent-foreground: 36 33% 97%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 20% 24%;
-    --input: 217 20% 24%;
-    --ring: 217 91% 60%;
+    --destructive-foreground: 36 33% 97%;
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 36 33% 97%;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Archivo', sans-serif;
+    letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Mono', monospace;
     @apply font-medium tracking-tight text-foreground;
+    letter-spacing: -0.03em;
   }
 
   code {
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Space Mono', monospace;
   }
 }
 
-/* Enhanced text gradient */
-.highlight-gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700;
+/* Modern text styling */
+.highlight-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70;
 }
 
 .section-divider {
-  @apply relative my-8 before:absolute before:inset-0 before:h-[1px] before:w-full before:bg-gradient-to-r before:from-transparent before:via-border before:to-transparent;
+  @apply relative my-8 before:absolute before:inset-0 before:h-[1px] before:w-full before:bg-border;
 }
 
 .nav-link {
   @apply relative px-3 py-1.5 text-sm font-medium transition-colors hover:text-primary;
-  @apply after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all;
+  @apply after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary after:transition-all;
   @apply hover:after:w-full;
 }
 
@@ -84,16 +86,24 @@
   @apply text-primary after:w-full;
 }
 
+/* Modern card designs */
 .project-card {
-  @apply border border-border bg-card/80 p-6 rounded-xl transition-all duration-500;
-  @apply hover:shadow-lg hover:shadow-primary/20 hover:border-primary/30;
-  @apply backdrop-blur-sm;
+  @apply relative border-b border-border bg-card p-6 transition-all duration-500;
+  @apply hover:bg-accent/50;
+}
+
+.project-card:nth-child(odd) {
+  @apply border-l;
+}
+
+.project-card:nth-child(even) {
+  @apply border-r;
 }
 
 .skill-badge {
-  @apply bg-secondary text-secondary-foreground rounded-full px-3 py-1 text-xs font-medium;
+  @apply bg-secondary text-secondary-foreground px-3 py-1 text-xs font-medium;
   @apply hover:bg-primary hover:text-primary-foreground transition-colors duration-300;
-  @apply transform transition-transform hover:scale-110 cursor-pointer;
+  @apply transform transition-transform hover:-translate-y-1 cursor-pointer;
 }
 
 /* Enhanced section designs */
@@ -105,27 +115,36 @@
   @apply container mx-auto max-w-6xl px-6;
 }
 
-/* Elegant glass effect */
-.glass-card {
-  @apply backdrop-blur-lg bg-white/90 border border-white/20 shadow-sm rounded-xl overflow-hidden;
-  @apply hover:shadow-xl hover:shadow-primary/10 transition-all duration-300;
-  @apply relative before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-br before:from-white/5 before:to-white/20 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100;
+/* Modern design elements */
+.modern-card {
+  @apply relative border-b border-border bg-card p-8 overflow-hidden;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-accent/20 before:opacity-0;
+  @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
 }
 
-/* Enhanced hover effects */
-.hover-glow {
-  @apply transition-all duration-300;
-  @apply hover:shadow-lg hover:shadow-primary/20;
+.modern-card::after {
+  content: '';
+  @apply absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-500;
 }
 
-.hover-scale {
-  @apply transition-transform duration-300;
-  @apply hover:scale-105;
+.modern-card:hover::after {
+  @apply w-full;
 }
 
-.hover-lift {
-  @apply transition-all duration-300;
-  @apply hover:-translate-y-1 hover:shadow-lg;
+.achievement-card {
+  @apply relative border-b border-l border-border bg-card p-8 overflow-hidden;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-accent/20 before:opacity-0;
+  @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
+  @apply after:absolute after:top-0 after:right-0 after:h-0 after:w-1 after:bg-primary after:transition-all after:duration-500;
+  @apply hover:after:h-full;
+}
+
+.certification-card {
+  @apply relative border-b border-r border-border bg-card p-8 overflow-hidden;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-accent/20 before:opacity-0;
+  @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
+  @apply after:absolute after:bottom-0 after:right-0 after:h-1 after:w-0 after:bg-primary after:transition-all after:duration-500;
+  @apply hover:after:w-full;
 }
 
 /* Enhanced animations */
@@ -144,11 +163,6 @@
   100% { transform: rotate(360deg); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
@@ -161,49 +175,76 @@
   animation: subtle-rotate 20s linear infinite;
 }
 
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-.glowing-border {
-  @apply relative overflow-hidden;
-  @apply before:absolute before:inset-0 before:rounded-xl before:p-[1px]
-  before:bg-gradient-to-r before:from-transparent before:via-primary/50 before:to-transparent
-  before:animate-pulse;
-}
-
-/* Enhanced scroll-based animations */
-.reveal-on-scroll {
+/* GSAP-ready classes */
+.gsap-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 1s ease-out;
+  visibility: hidden;
 }
 
-.revealed {
-  opacity: 1;
-  transform: translateY(0);
+.gsap-reveal-left {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50px);
 }
 
-/* Royal card styling */
-.royal-card {
-  @apply relative rounded-xl overflow-hidden;
-  @apply before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-600/10 before:to-purple-600/5 before:z-0;
-  @apply after:absolute after:inset-0 after:border after:border-blue-300/10 after:rounded-xl after:z-0;
-  @apply hover:before:opacity-80 before:transition-opacity before:duration-500;
+.gsap-reveal-right {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(50px);
 }
 
-/* Elegant text styles */
-.elegant-heading {
-  @apply font-bold bg-clip-text text-transparent bg-gradient-to-r;
-  @apply from-blue-700 via-indigo-600 to-purple-700;
-  @apply leading-tight tracking-tight;
+.gsap-reveal-up {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50px);
 }
 
-/* Refined radial background effect */
-.radial-background {
-  @apply absolute opacity-40 rounded-full blur-2xl -z-10;
-  @apply transition-all duration-700 ease-in-out;
-  @apply hover:opacity-60;
+.gsap-reveal-down {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50px);
+}
+
+.gsap-stagger-item {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Modern layout styles */
+.asymmetric-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 1rem;
+}
+
+.asymmetric-grid > *:nth-child(odd) {
+  grid-column: span 7;
+}
+
+.asymmetric-grid > *:nth-child(even) {
+  grid-column: span 5;
+}
+
+@media (max-width: 768px) {
+  .asymmetric-grid > * {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
 }

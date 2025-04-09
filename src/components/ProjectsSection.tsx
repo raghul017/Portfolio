@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { 
   ArrowUpRight, 
   Github,
@@ -8,10 +8,13 @@ import {
   CheckSquare,
   Briefcase
 } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
   id: number;
@@ -30,7 +33,7 @@ const projects: Project[] = [
     description: "Developed an object detection system using YOLOv5 to recognize and classify real-world objects in images and video streams. Leveraged OpenCV and Python for preprocessing and real-time deployment.",
     icon: <Eye className="h-10 w-10 text-primary" />,
     technologies: ["Python", "YOLO", "OpenCV"],
-    githubUrl: "https://github.com/raghul06"
+    githubUrl: "https://github.com/raghul017"
   },
   {
     id: 2,
@@ -56,102 +59,112 @@ const projects: Project[] = [
 ];
 
 const ProjectsSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Section title animation
+      gsap.fromTo('.projects-title', 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          }
+        }
+      );
+      
+      // Project cards staggered animation
+      gsap.fromTo(
+        projectsRef.current?.querySelectorAll('.project-card'),
+        { opacity: 0, y: 30 },
+        { 
+          opacity: 1, 
+          y: 0,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: projectsRef.current,
+            start: "top 80%",
+          }
+        }
+      );
+    }, sectionRef);
+    
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section 
       id="projects" 
+      ref={sectionRef}
       className="section bg-secondary/20 relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(60%_20%_at_50%_80%,rgba(59,130,246,0.1),rgba(0,0,0,0))]" />
-      
       <div className="section-inner relative z-10">
-        <div className="space-y-3 mb-16 reveal-on-scroll">
-          <h2 className="text-4xl font-bold">Projects</h2>
-          <div className="h-1 w-12 bg-primary rounded-full"></div>
+        <div className="space-y-3 mb-16">
+          <h2 className="projects-title text-4xl font-bold">Projects</h2>
+          <div className="h-[2px] w-12 bg-primary"></div>
           <p className="text-muted-foreground max-w-2xl">
             A collection of projects showcasing my skills in data analysis, machine learning, and web development.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="reveal-on-scroll"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <Card className="project-card overflow-hidden flex flex-col h-full border-border/40 bg-secondary/10">
-                <CardHeader className="pb-2">
-                  <div className="flex justify-between items-start">
-                    <motion.div 
-                      className="p-4 bg-primary/5 rounded-xl mb-3"
-                      whileHover={{ rotate: 5, scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
+        <div ref={projectsRef} className="grid grid-cols-1 md:grid-cols-2 gap-0">
+          {projects.map((project) => (
+            <div key={project.id} className="project-card">
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-4 bg-background/50 border border-border mb-3">
+                    {project.icon}
+                  </div>
+                  {project.githubUrl && (
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="GitHub repository"
                     >
-                      {project.icon}
-                    </motion.div>
-                    {project.githubUrl && (
-                      <motion.a 
-                        href={project.githubUrl} 
+                      <Github className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                <p className="text-muted-foreground mb-6 text-sm">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {project.technologies.map((tech) => (
+                    <Badge key={tech} variant="outline" className="bg-background/50 hover:bg-primary hover:text-primary-foreground border-border">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                
+                {project.demoUrl && (
+                  <div className="mt-6">
+                    <Button 
+                      variant="outline" 
+                      className="gap-2 hover:bg-primary hover:text-primary-foreground group border-border"
+                      asChild
+                    >
+                      <a 
+                        href={project.demoUrl} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label="GitHub repository"
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        transition={{ duration: 0.5 }}
                       >
-                        <Github className="h-5 w-5" />
-                      </motion.a>
-                    )}
+                        <span>View Project</span>
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    </Button>
                   </div>
-                  <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground mb-6">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {project.technologies.map((tech) => (
-                      <motion.div
-                        key={tech}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        <Badge variant="outline" className="bg-secondary/30 hover:bg-primary/20 border-primary/20">
-                          {tech}
-                        </Badge>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-                {project.demoUrl && (
-                  <CardFooter>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      className="w-full"
-                    >
-                      <Button 
-                        variant="outline" 
-                        className="w-full gap-2 hover:bg-primary hover:text-primary-foreground group"
-                        asChild
-                      >
-                        <a 
-                          href={project.demoUrl} 
-                          target="_blank" 
-                          rel="noreferrer"
-                        >
-                          <span>View Project</span>
-                          <motion.div
-                            animate={{ x: [0, 4, 0] }}
-                            transition={{ repeat: Infinity, duration: 1.5 }}
-                          >
-                            <ArrowUpRight className="h-4 w-4" />
-                          </motion.div>
-                        </a>
-                      </Button>
-                    </motion.div>
-                  </CardFooter>
                 )}
-              </Card>
-            </motion.div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
