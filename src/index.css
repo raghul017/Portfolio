@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,8 +65,9 @@
   }
 }
 
+/* Enhanced text gradient */
 .highlight-gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700;
 }
 
 .section-divider {
@@ -83,7 +85,7 @@
 }
 
 .project-card {
-  @apply border border-border bg-card/80 p-6 rounded-lg transition-all duration-500;
+  @apply border border-border bg-card/80 p-6 rounded-xl transition-all duration-500;
   @apply hover:shadow-lg hover:shadow-primary/20 hover:border-primary/30;
   @apply backdrop-blur-sm;
 }
@@ -94,21 +96,23 @@
   @apply transform transition-transform hover:scale-110 cursor-pointer;
 }
 
-/* Section designs */
+/* Enhanced section designs */
 .section {
-  @apply py-28 relative;
+  @apply py-28 relative overflow-hidden;
 }
 
 .section-inner {
   @apply container mx-auto max-w-6xl px-6;
 }
 
-/* Glass effect for card backgrounds */
+/* Elegant glass effect */
 .glass-card {
-  @apply backdrop-blur-lg bg-white/90 border border-white/20 shadow-sm rounded-xl;
+  @apply backdrop-blur-lg bg-white/90 border border-white/20 shadow-sm rounded-xl overflow-hidden;
+  @apply hover:shadow-xl hover:shadow-primary/10 transition-all duration-300;
+  @apply relative before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-br before:from-white/5 before:to-white/20 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100;
 }
 
-/* Hover effects */
+/* Enhanced hover effects */
 .hover-glow {
   @apply transition-all duration-300;
   @apply hover:shadow-lg hover:shadow-primary/20;
@@ -124,7 +128,7 @@
   @apply hover:-translate-y-1 hover:shadow-lg;
 }
 
-/* Animations */
+/* Enhanced animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -140,6 +144,11 @@
   100% { transform: rotate(360deg); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
@@ -152,21 +161,49 @@
   animation: subtle-rotate 20s linear infinite;
 }
 
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
 .glowing-border {
   @apply relative overflow-hidden;
-  @apply before:absolute before:inset-0 before:rounded-lg before:p-[1px]
+  @apply before:absolute before:inset-0 before:rounded-xl before:p-[1px]
   before:bg-gradient-to-r before:from-transparent before:via-primary/50 before:to-transparent
   before:animate-pulse;
 }
 
-/* Modern scroll-based animations */
+/* Enhanced scroll-based animations */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.8s ease-out, transform 1s ease-out;
 }
 
 .revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Royal card styling */
+.royal-card {
+  @apply relative rounded-xl overflow-hidden;
+  @apply before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-600/10 before:to-purple-600/5 before:z-0;
+  @apply after:absolute after:inset-0 after:border after:border-blue-300/10 after:rounded-xl after:z-0;
+  @apply hover:before:opacity-80 before:transition-opacity before:duration-500;
+}
+
+/* Elegant text styles */
+.elegant-heading {
+  @apply font-bold bg-clip-text text-transparent bg-gradient-to-r;
+  @apply from-blue-700 via-indigo-600 to-purple-700;
+  @apply leading-tight tracking-tight;
+}
+
+/* Refined radial background effect */
+.radial-background {
+  @apply absolute opacity-40 rounded-full blur-2xl -z-10;
+  @apply transition-all duration-700 ease-in-out;
+  @apply hover:opacity-60;
 }
