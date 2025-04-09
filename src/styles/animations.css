@@ -5,6 +5,13 @@
   50% { transform: translateY(-10px); }
 }
 
+@keyframes float-random {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -20px) rotate(5deg); }
+  66% { transform: translate(-20px, 10px) rotate(-3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
 @keyframes pulse-border {
   0%, 100% { border-color: hsl(var(--primary) / 0.3); }
   50% { border-color: hsl(var(--primary) / 0.8); }
@@ -25,6 +32,24 @@
 
 .animate-subtle-rotate {
   animation: subtle-rotate 20s linear infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 /* GSAP-ready classes */
@@ -60,4 +85,30 @@
 .gsap-stagger-item {
   opacity: 0;
   visibility: hidden;
+}
+
+/* Text reveal animation */
+@keyframes reveal-text {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.reveal-text {
+  animation: reveal-text 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.reveal-text-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.reveal-text-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.reveal-text-delay-3 {
+  animation-delay: 0.3s;
 }

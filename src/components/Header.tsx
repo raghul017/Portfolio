@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, FileText } from "lucide-react";
 import { motion } from "framer-motion";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,7 +60,6 @@ const Header: React.FC = () => {
         </nav>
         
         <div className="flex items-center gap-3">
-          <ThemeToggle />
           <HeaderIcon href="mailto:arraghul06@gmail.com" label="Email" delay={0.1}>
             <Mail className="h-4 w-4" />
           </HeaderIcon>
@@ -79,7 +77,7 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Button variant="outline" size="sm" className="gap-2 hover:bg-primary hover:text-primary-foreground">
+            <Button variant="outline" size="sm" className="gap-2 hover:bg-primary/10 hover:text-primary border-border/40">
               <FileText className="h-4 w-4" />
               <span>Resume</span>
             </Button>
@@ -131,7 +129,7 @@ const HeaderIcon: React.FC<HeaderIconProps> = ({ href, label, children, delay = 
     <Button 
       variant="ghost" 
       size="icon" 
-      className="rounded-full hover:bg-primary/20 focus:bg-primary/20 transition-colors"
+      className="rounded-full hover:bg-primary/10 focus:bg-primary/10 transition-colors"
     >
       {children}
     </Button>

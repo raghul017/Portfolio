@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,28 +7,6 @@
 
 @layer base {
   :root {
-    --background: 36 33% 97%;
-    --foreground: 240 10% 4%;
-    --card: 36 33% 97%;
-    --card-foreground: 240 10% 4%;
-    --popover: 36 33% 97%;
-    --popover-foreground: 240 10% 4%;
-    --primary: 240 10% 4%;
-    --primary-foreground: 36 33% 97%;
-    --secondary: 38 30% 96%;
-    --secondary-foreground: 240 10% 4%;
-    --muted: 38 30% 96%;
-    --muted-foreground: 240 10% 30%;
-    --accent: 36 40% 90%;
-    --accent-foreground: 240 10% 4%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 36 33% 97%;
-    --border: 38 10% 85%;
-    --input: 38 10% 85%;
-    --ring: 240 10% 4%;
-  }
-  
-  .dark {
     --background: 240 10% 4%;
     --foreground: 36 33% 97%;
     --card: 240 10% 4%;
@@ -52,7 +30,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     letter-spacing: -0.01em;
   }
 
@@ -69,8 +47,8 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {

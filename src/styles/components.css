@@ -4,6 +4,13 @@
   @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70;
 }
 
+.highlight-gradient-text {
+  background: linear-gradient(to right, hsl(var(--foreground)), hsl(var(--foreground) / 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .section-divider {
   @apply relative my-8 before:absolute before:inset-0 before:h-[1px] before:w-full before:bg-border;
 }
@@ -22,14 +29,16 @@
 .project-card {
   @apply relative border-b border-border bg-card p-6 transition-all duration-500;
   @apply hover:bg-accent/50;
+  @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
-.project-card:nth-child(odd) {
-  @apply border-l;
+.project-card:hover::before {
+  @apply opacity-100;
 }
 
-.project-card:nth-child(even) {
-  @apply border-r;
+.project-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 transition-opacity duration-300;
 }
 
 .skill-badge {
@@ -49,41 +58,32 @@
 
 /* Modern design elements */
 .modern-card {
-  @apply relative border-b border-border bg-card p-8 overflow-hidden;
-  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-accent/20 before:opacity-0;
+  @apply relative border border-border/40 bg-secondary/30 p-8 overflow-hidden rounded-sm;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-primary/5 before:opacity-0;
   @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
+  @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
-.modern-card::after {
-  content: '';
-  @apply absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-500;
-}
-
-.modern-card:hover::after {
-  @apply w-full;
-}
-
+/* Achievement and certification card styles */
 .achievement-card {
-  @apply relative border-b border-l border-border bg-card p-8 overflow-hidden;
-  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-accent/20 before:opacity-0;
+  @apply relative border border-border/40 bg-secondary/30 p-8 overflow-hidden rounded-sm;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-primary/5 before:opacity-0;
   @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
-  @apply after:absolute after:top-0 after:right-0 after:h-0 after:w-1 after:bg-primary after:transition-all after:duration-500;
-  @apply hover:after:h-full;
+  @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
 .certification-card {
-  @apply relative border-b border-r border-border bg-card p-8 overflow-hidden;
-  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-accent/20 before:opacity-0;
+  @apply relative border border-border/40 bg-secondary/30 p-8 overflow-hidden rounded-sm;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-primary/5 before:opacity-0;
   @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
-  @apply after:absolute after:bottom-0 after:right-0 after:h-1 after:w-0 after:bg-primary after:transition-all after:duration-500;
-  @apply hover:after:w-full;
+  @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
 /* Modern layout styles */
 .asymmetric-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
 }
 
 .asymmetric-grid > *:nth-child(odd) {
@@ -98,4 +98,25 @@
   .asymmetric-grid > * {
     grid-column: 1 / -1 !important;
   }
+}
+
+/* Floating elements */
+.floating-element {
+  @apply absolute pointer-events-none opacity-30;
+  animation: float-random 15s infinite ease-in-out;
+}
+
+.floating-element:nth-child(odd) {
+  animation-duration: 20s;
+  animation-delay: 2s;
+}
+
+.floating-element:nth-child(3n) {
+  animation-duration: 25s;
+  animation-delay: 5s;
+}
+
+.floating-element:nth-child(4n) {
+  animation-duration: 30s;
+  animation-delay: 7s;
 }

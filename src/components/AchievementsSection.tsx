@@ -62,9 +62,9 @@ const certifications: Achievement[] = [
 
 // Achievement card component with improved design
 const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean }> = ({ item, isAchievement = true }) => (
-  <div className={isAchievement ? "achievement-card gsap-stagger-item" : "certification-card gsap-stagger-item"}>
+  <div className={`${isAchievement ? "achievement-card" : "certification-card"} gsap-stagger-item`}>
     <div className="flex items-start gap-6 relative z-10">
-      <div className="p-4 border border-border">
+      <div className="p-4 border border-border/40 rounded-sm">
         {item.icon}
       </div>
       <div className="flex-1">
@@ -80,7 +80,7 @@ const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean }> 
             href={item.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 border border-border hover:bg-primary hover:text-primary-foreground text-sm transition-all duration-300"
+            className="inline-flex items-center gap-2 mt-3 px-4 py-1.5 border border-border/40 hover:bg-primary/10 text-sm transition-all duration-300"
           >
             View Certificate
           </a>
@@ -178,9 +178,9 @@ const AchievementsSection: React.FC = () => {
             <div className="section-divider h-[1px] bg-border flex-grow"></div>
           </div>
           
-          <div ref={achievementsRef} className="space-y-4">
+          <div ref={achievementsRef} className="grid grid-cols-1 gap-6 stagger-container">
             {achievements.map((achievement) => (
-              <AchievementCard key={achievement.id} item={achievement} />
+              <AchievementCard key={achievement.id} item={achievement} className="stagger-item" />
             ))}
           </div>
         </div>
@@ -193,9 +193,9 @@ const AchievementsSection: React.FC = () => {
             <div className="section-divider h-[1px] bg-border flex-grow"></div>
           </div>
           
-          <div ref={certificationsRef} className="space-y-4">
+          <div ref={certificationsRef} className="grid grid-cols-1 gap-6 stagger-container">
             {certifications.map((certification) => (
-              <AchievementCard key={certification.id} item={certification} isAchievement={false} />
+              <AchievementCard key={certification.id} item={certification} isAchievement={false} className="stagger-item" />
             ))}
           </div>
         </div>
