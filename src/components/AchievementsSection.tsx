@@ -61,8 +61,13 @@ const certifications: Achievement[] = [
 ];
 
 // Achievement card component with improved design
-const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean }> = ({ item, isAchievement = true }) => (
-  <div className={isAchievement ? "achievement-card" : "certification-card"}>
+// Update the interface to include className as an optional prop
+const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean; className?: string }> = ({ 
+  item, 
+  isAchievement = true,
+  className
+}) => (
+  <div className={`${isAchievement ? "achievement-card" : "certification-card"} ${className || ""}`}>
     <div className="flex items-start gap-6 relative z-10">
       <div className="p-4 border border-border/40 rounded-sm">
         {item.icon}
@@ -180,7 +185,11 @@ const AchievementsSection: React.FC = () => {
           
           <div ref={achievementsRef} className="grid grid-cols-1 gap-6 stagger-container">
             {achievements.map((achievement) => (
-              <AchievementCard key={achievement.id} item={achievement} />
+              <AchievementCard 
+                key={achievement.id} 
+                item={achievement}
+                className="hover-lift hover-glow" 
+              />
             ))}
           </div>
         </div>
@@ -195,7 +204,12 @@ const AchievementsSection: React.FC = () => {
           
           <div ref={certificationsRef} className="grid grid-cols-1 gap-6 stagger-container">
             {certifications.map((certification) => (
-              <AchievementCard key={certification.id} item={certification} isAchievement={false} />
+              <AchievementCard 
+                key={certification.id} 
+                item={certification} 
+                isAchievement={false}
+                className="hover-lift hover-glow"
+              />
             ))}
           </div>
         </div>
