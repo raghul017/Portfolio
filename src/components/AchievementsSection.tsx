@@ -62,7 +62,7 @@ const certifications: Achievement[] = [
 
 // Achievement card component with improved design
 const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean }> = ({ item, isAchievement = true }) => (
-  <div className={`${isAchievement ? "achievement-card" : "certification-card"} gsap-stagger-item`}>
+  <div className={isAchievement ? "achievement-card" : "certification-card"}>
     <div className="flex items-start gap-6 relative z-10">
       <div className="p-4 border border-border/40 rounded-sm">
         {item.icon}
@@ -129,7 +129,7 @@ const AchievementsSection: React.FC = () => {
       
       // Achievements staggered animation
       gsap.fromTo(
-        achievementsRef.current?.querySelectorAll('.gsap-stagger-item'),
+        achievementsRef.current?.querySelectorAll('.achievement-card'),
         { opacity: 0, x: -30 },
         { 
           opacity: 1, 
@@ -146,7 +146,7 @@ const AchievementsSection: React.FC = () => {
       
       // Certifications staggered animation
       gsap.fromTo(
-        certificationsRef.current?.querySelectorAll('.gsap-stagger-item'),
+        certificationsRef.current?.querySelectorAll('.certification-card'),
         { opacity: 0, x: 30 },
         { 
           opacity: 1, 
@@ -166,7 +166,7 @@ const AchievementsSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="achievements" className="py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="achievements" className="py-32 relative overflow-hidden bg-cream">
       <div className="container max-w-6xl mx-auto px-6">
         <h2 className="section-title text-4xl font-bold mb-20">Achievements & Certifications</h2>
         
@@ -180,7 +180,7 @@ const AchievementsSection: React.FC = () => {
           
           <div ref={achievementsRef} className="grid grid-cols-1 gap-6 stagger-container">
             {achievements.map((achievement) => (
-              <AchievementCard key={achievement.id} item={achievement} className="stagger-item" />
+              <AchievementCard key={achievement.id} item={achievement} />
             ))}
           </div>
         </div>
@@ -195,7 +195,7 @@ const AchievementsSection: React.FC = () => {
           
           <div ref={certificationsRef} className="grid grid-cols-1 gap-6 stagger-container">
             {certifications.map((certification) => (
-              <AchievementCard key={certification.id} item={certification} isAchievement={false} className="stagger-item" />
+              <AchievementCard key={certification.id} item={certification} isAchievement={false} />
             ))}
           </div>
         </div>

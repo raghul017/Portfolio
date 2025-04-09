@@ -19,11 +19,11 @@ const Header: React.FC = () => {
 
   return (
     <motion.header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm" : "bg-transparent"
+      className={`fixed top-8 left-0 right-0 z-50 w-auto mx-auto max-w-4xl transition-all duration-300 ${
+        isScrolled ? "floating-header" : "bg-transparent"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="container flex h-16 items-center justify-between">
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
         >
           <Link to="/" className="flex items-center gap-2">
             <motion.span 
-              className="text-xl font-bold tracking-tight highlight-gradient-text"
+              className="text-xl font-bold tracking-tight cream-gradient-text"
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
               Raghul A. R.
             </motion.span>
             <motion.span 
-              className="hidden sm:inline-block text-sm font-light text-muted-foreground"
+              className="hidden sm:inline-block text-sm font-light text-cream/70"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Button variant="outline" size="sm" className="gap-2 hover:bg-primary/10 hover:text-primary border-border/40">
+            <Button variant="outline" size="sm" className="gap-2 hover:bg-cream/20 hover:text-cream border-cream/40 text-cream">
               <FileText className="h-4 w-4" />
               <span>Resume</span>
             </Button>
@@ -97,7 +97,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ href, children, delay = 0 }) => (
   <motion.a 
     href={href} 
-    className="nav-link"
+    className="nav-link text-cream"
     whileHover={{ scale: 1.1 }}
     initial={{ opacity: 0, y: -10 }}
     animate={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ const HeaderIcon: React.FC<HeaderIconProps> = ({ href, label, children, delay = 
     <Button 
       variant="ghost" 
       size="icon" 
-      className="rounded-full hover:bg-primary/10 focus:bg-primary/10 transition-colors"
+      className="rounded-full hover:bg-cream/10 focus:bg-cream/10 transition-colors text-cream"
     >
       {children}
     </Button>

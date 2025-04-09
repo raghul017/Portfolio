@@ -16,10 +16,10 @@ const ProfileImage: React.FC<ProfileImageProps> = ({ imageSrc, alt }) => {
   return (
     <motion.div variants={item} className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
       {/* Border frame */}
-      <div className="absolute inset-0 border border-border/40 transform translate-x-4 translate-y-4"></div>
+      <div className="absolute inset-0 border border-cream/40 transform translate-x-4 translate-y-4"></div>
       
       {/* Image container */}
-      <div className="relative overflow-hidden w-full h-full border border-border/40">
+      <div className="relative overflow-hidden w-full h-full border border-cream/40">
         <img 
           src={imageSrc} 
           alt={alt} 
@@ -27,18 +27,18 @@ const ProfileImage: React.FC<ProfileImageProps> = ({ imageSrc, alt }) => {
         />
         
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-matt-black/70 to-transparent opacity-60"></div>
       </div>
       
       {/* Animated accent */}
       <motion.div 
-        className="absolute top-4 left-4 w-16 h-16 border-t border-l border-primary"
+        className="absolute top-4 left-4 w-16 h-16 border-t border-l border-cream"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute bottom-4 right-4 w-16 h-16 border-b border-r border-primary"
+        className="absolute bottom-4 right-4 w-16 h-16 border-b border-r border-cream"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}

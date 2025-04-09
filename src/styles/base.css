@@ -26,6 +26,9 @@
     --border: 240 6% 15%;
     --input: 240 6% 15%;
     --ring: 36 33% 97%;
+    --matt-black: 240 10% 8%;
+    --cream: 39 100% 97%;
+    --cream-foreground: 240 10% 12%;
   }
 
   body {
@@ -42,6 +45,23 @@
 
   code {
     font-family: 'Space Mono', monospace;
+  }
+  
+  .bg-matt-black {
+    background-color: hsl(var(--matt-black));
+  }
+  
+  .bg-cream {
+    background-color: hsl(var(--cream));
+    color: hsl(var(--cream-foreground));
+  }
+  
+  .text-cream {
+    color: hsl(var(--cream));
+  }
+  
+  .text-matt-black {
+    color: hsl(var(--matt-black));
   }
 }
 

@@ -38,10 +38,10 @@ const Index: React.FC = () => {
     const ctx = gsap.context(() => {
       // Animate sections on scroll
       const sections = document.querySelectorAll('section');
-      sections.forEach((section, index) => {
+      sections.forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0.7, y: 50 },
+          { opacity: 0.8, y: 50 },
           {
             opacity: 1,
             y: 0,
@@ -55,60 +55,59 @@ const Index: React.FC = () => {
             },
           }
         );
-        
-        // Animate section headers
-        const sectionTitle = section.querySelector('.section-title');
-        if (sectionTitle) {
-          gsap.fromTo(
-            sectionTitle,
-            { opacity: 0, x: -50 },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: sectionTitle,
-                start: "top 80%",
-                toggleActions: "play none none reverse",
-              }
-            }
-          );
-        }
       });
-      
-      // Parallax background elements
-      const bgElements = document.querySelectorAll('.bg-element');
-      bgElements.forEach((el) => {
+
+      // Enhanced parallax for background elements
+      const parallaxElements = document.querySelectorAll('.bg-element');
+      parallaxElements.forEach((el) => {
         gsap.to(el, {
-          y: () => window.innerHeight * 0.2,
-          ease: "none",
+          y: (i) => (i % 2 === 0 ? -100 : 100),
           scrollTrigger: {
-            trigger: el.parentElement,
-            start: "top bottom",
-            end: "bottom top",
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
             scrub: true,
-          },
+            toggleActions: "play none none reverse"
+          }
         });
       });
       
-      // Animate staggered items (skills, projects, etc.)
-      const staggerContainers = document.querySelectorAll('.stagger-container');
-      staggerContainers.forEach((container) => {
-        const items = container.querySelectorAll('.stagger-item');
+      // Floating shape animations
+      const shapes = document.querySelectorAll('.bg-shape');
+      shapes.forEach((shape, i) => {
+        gsap.to(shape, {
+          y: (i % 2 === 0) ? -100 : 100,
+          x: (i % 3 === 0) ? -50 : 50,
+          rotation: (i % 2 === 0) ? 90 : -90,
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+      
+      // Add scroll-triggered reveal animations for content blocks
+      const revealBlocks = document.querySelectorAll('.reveal-on-scroll');
+      revealBlocks.forEach((block, index) => {
         gsap.fromTo(
-          items,
-          { opacity: 0, y: 20 },
+          block,
+          { 
+            opacity: 0, 
+            y: 50 
+          },
           {
             opacity: 1,
             y: 0,
-            stagger: 0.1,
-            duration: 0.5,
-            ease: "power2.out",
+            duration: 0.8,
+            delay: index * 0.15,
+            ease: "power3.out",
             scrollTrigger: {
-              trigger: container,
-              start: "top 75%",
-              toggleActions: "play none none reverse",
+              trigger: block,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
             }
           }
         );
@@ -122,12 +121,13 @@ const Index: React.FC = () => {
     <div className="min-h-screen bg-background" ref={mainRef}>
       <Header />
       <main className="relative">
-        {/* Modern, minimalist background elements */}
+        {/* Large floating background elements */}
         <div className="fixed inset-0 -z-10">
+          <div className="bg-element-large top-0 left-10 border border-cream/5 rounded-full animate-float-slow"></div>
+          <div className="bg-element-large bottom-0 right-10 border border-cream/5 rounded-sm animate-float-medium"></div>
+          <div className="bg-element-medium top-1/3 left-1/4 w-[200px] h-[200px] border border-cream/5 animate-float"></div>
+          <div className="bg-element-small top-2/3 right-1/3 w-[100px] h-[100px] bg-cream/5 animate-float-medium"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.03),transparent_70%)]"></div>
-          <div className="absolute top-1/2 left-3/4 w-[300px] h-[300px] border border-border rounded-sm blur-sm bg-element"></div>
-          <div className="absolute bottom-0 right-1/2 w-[400px] h-[1px] bg-border bg-element"></div>
-          <div className="absolute top-1/4 left-1/4 w-[100px] h-[1px] bg-border rotate-45 bg-element"></div>
         </div>
 
         <HeroSection />

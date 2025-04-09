@@ -11,6 +11,13 @@
   background-clip: text;
 }
 
+.cream-gradient-text {
+  background: linear-gradient(to right, hsl(var(--cream)), hsl(var(--cream) / 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .section-divider {
   @apply relative my-8 before:absolute before:inset-0 before:h-[1px] before:w-full before:bg-border;
 }
@@ -27,8 +34,8 @@
 
 /* Modern card designs */
 .project-card {
-  @apply relative border-b border-border bg-card p-6 transition-all duration-500;
-  @apply hover:bg-accent/50;
+  @apply relative border-b border-border bg-transparent p-6 transition-all duration-500;
+  @apply hover:bg-cream/10;
   @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
@@ -42,8 +49,8 @@
 }
 
 .skill-badge {
-  @apply bg-secondary text-secondary-foreground px-3 py-1 text-xs font-medium;
-  @apply hover:bg-primary hover:text-primary-foreground transition-colors duration-300;
+  @apply bg-matt-black text-cream px-3 py-1 text-xs font-medium;
+  @apply hover:bg-cream hover:text-matt-black transition-colors duration-300;
   @apply transform transition-transform hover:-translate-y-1 cursor-pointer;
 }
 
@@ -58,25 +65,27 @@
 
 /* Modern design elements */
 .modern-card {
-  @apply relative border border-border/40 bg-secondary/30 p-8 overflow-hidden rounded-sm;
-  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-primary/5 before:opacity-0;
+  @apply relative border border-cream/40 bg-matt-black/30 p-8 overflow-hidden;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-cream/5 before:opacity-0;
   @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
   @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
 /* Achievement and certification card styles */
 .achievement-card {
-  @apply relative border border-border/40 bg-secondary/30 p-8 overflow-hidden rounded-sm;
-  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-primary/5 before:opacity-0;
+  @apply relative border border-matt-black/40 bg-cream/80 p-8 overflow-hidden text-matt-black;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-matt-black/5 before:opacity-0;
   @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
   @apply transform transition-all duration-300 hover:-translate-y-1;
+  @apply mb-4;
 }
 
 .certification-card {
-  @apply relative border border-border/40 bg-secondary/30 p-8 overflow-hidden rounded-sm;
-  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-primary/5 before:opacity-0;
+  @apply relative border border-matt-black/40 bg-cream/80 p-8 overflow-hidden text-matt-black;
+  @apply before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-transparent before:to-matt-black/5 before:opacity-0;
   @apply hover:before:opacity-100 before:transition-opacity before:duration-500;
   @apply transform transition-all duration-300 hover:-translate-y-1;
+  @apply mb-4;
 }
 
 /* Modern layout styles */
@@ -100,23 +109,68 @@
   }
 }
 
-/* Floating elements */
-.floating-element {
-  @apply absolute pointer-events-none opacity-30;
-  animation: float-random 15s infinite ease-in-out;
+/* Color-specific UI elements */
+.data-blue {
+  color: #3B82F6;
 }
 
-.floating-element:nth-child(odd) {
-  animation-duration: 20s;
-  animation-delay: 2s;
+.data-indigo {
+  color: #6366F1;
 }
 
-.floating-element:nth-child(3n) {
-  animation-duration: 25s;
-  animation-delay: 5s;
+.data-teal {
+  color: #14B8A6;
 }
 
-.floating-element:nth-child(4n) {
-  animation-duration: 30s;
-  animation-delay: 7s;
+.data-emerald {
+  color: #10B981;
+}
+
+.data-purple {
+  color: #8B5CF6;
+}
+
+/* Floating header */
+.floating-header {
+  @apply fixed top-4 left-0 right-0 z-50 mx-auto max-w-5xl bg-matt-black/80 backdrop-blur-lg border border-cream/10 rounded-lg;
+  @apply transform transition-all duration-500;
+  @apply shadow-[0_4px_30px_rgba(0,0,0,0.2)];
+}
+
+/* Background elements */
+.bg-shapes {
+  @apply fixed inset-0 -z-10 overflow-hidden;
+  @apply pointer-events-none;
+}
+
+.bg-shape {
+  @apply absolute opacity-10;
+  @apply pointer-events-none;
+}
+
+.bg-shape-1 {
+  width: 500px;
+  height: 500px;
+  border: 1px solid hsl(var(--cream) / 0.2);
+  top: 10%;
+  left: -100px;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+
+.bg-shape-2 {
+  width: 600px;
+  height: 600px;
+  border: 1px solid hsl(var(--cream) / 0.15);
+  bottom: -200px;
+  right: -200px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.bg-shape-3 {
+  width: 300px;
+  height: 300px;
+  border: 1px solid hsl(var(--cream) / 0.1);
+  top: 40%;
+  right: 10%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
