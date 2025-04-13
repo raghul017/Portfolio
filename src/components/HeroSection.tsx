@@ -55,7 +55,7 @@ const HeroSection: React.FC = () => {
           animate="show"
           variants={container}
         >
-          <ProfileImage imageSrc="images/myimg.jpeg" alt="Raghul A R - Data Analyst" />
+          <ProfileImage imageSrc="images/myimages2.jpeg" alt="Raghul A R - Data Analyst" />
         </motion.div>
 
         {/* Text Content */}
