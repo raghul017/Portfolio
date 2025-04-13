@@ -23,7 +23,7 @@ const ProfileImage: React.FC<ProfileImageProps> = ({ imageSrc, alt }) => {
         <img 
           src={imageSrc} 
           alt={alt} 
-          className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+          className="w-full h-full object-cover transition-all duration-700" 
         />
         
         {/* Overlay gradient */}

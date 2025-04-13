@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 
+import { Variants } from "framer-motion";
+
 interface CallToActionProps {
-  item: any; // Animation variant
+  item: Variants; // Animation variant
 }
 
 const CallToAction: React.FC<CallToActionProps> = ({ item }) => {
@@ -65,7 +67,7 @@ const CallToAction: React.FC<CallToActionProps> = ({ item }) => {
           className="hover-glow px-8 py-6 text-base gap-2"
           asChild
         >
-          <a href="#about">
+          <a href="/Raghul CV.docx" download>
             <Download className="h-4 w-4 mr-1" />
             <span>Resume</span>
           </a>

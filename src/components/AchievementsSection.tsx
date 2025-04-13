@@ -1,11 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
 import { Award, Briefcase, Trophy, GraduationCap } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
 
 interface Achievement {
   id: number;
@@ -23,21 +18,21 @@ const achievements: Achievement[] = [
     title: "Winner – IIT Patna Tech Fest",
     institution: "IIT Patna",
     description: "Secured first place for presenting an innovative solution during a national-level technology competition.",
-    icon: <Trophy className="h-8 w-8 text-primary" />,
+    icon: <Trophy className="h-8 w-8 text-black" />,
   },
   {
     id: 2,
     title: "Winner – Smart India Hackathon (SIH) Round 1",
     institution: "Smart India Hackathon",
     description: "Qualified for the next round of SIH by designing a high-impact tech solution in response to a real-world problem statement.",
-    icon: <Award className="h-8 w-8 text-primary" />,
+    icon: <Award className="h-8 w-8 text-black" />,
   },
   {
     id: 3,
     title: "Data Analyst Intern",
     institution: "Futurense Technologies",
     description: "Successfully completed internship at Futurense Technologies, contributing to the 'This is US Pathway' program for data professionals.",
-    icon: <Briefcase className="h-8 w-8 text-primary" />,
+    icon: <Briefcase className="h-8 w-8 text-black" />,
   },
 ];
 
@@ -47,7 +42,7 @@ const certifications: Achievement[] = [
     title: "Full Stack Web Development",
     institution: "Harkirat Singh",
     description: "Completed comprehensive full stack web development certification program.",
-    icon: <GraduationCap className="h-8 w-8 text-primary" />,
+    icon: <GraduationCap className="h-8 w-8 text-black " />,
     link: "https://app.100xdevs.com/certificate/verify/8O3N5V9C"
   },
   {
@@ -55,7 +50,7 @@ const certifications: Achievement[] = [
     title: "The Complete Python Developer",
     institution: "Udemy",
     description: "Mastered Python development through a comprehensive certification program.",
-    icon: <GraduationCap className="h-8 w-8 text-primary" />,
+    icon: <GraduationCap className="h-8 w-8 text-black" />,
     link: "https://ude.my/UC-55d7a7db-106f-48be-9927-70eb85e06e84"
   }
 ];
@@ -69,7 +64,7 @@ const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean; cl
 }) => (
   <div className={`${isAchievement ? "achievement-card" : "certification-card"} ${className || ""}`}>
     <div className="flex items-start gap-6 relative z-10">
-      <div className="p-4 border border-border/40 rounded-sm">
+      <div className="p-4 border border-border/40 rounded-sm bg-white/5">
         {item.icon}
       </div>
       <div className="flex-1">
@@ -96,99 +91,66 @@ const AchievementCard: React.FC<{ item: Achievement; isAchievement?: boolean; cl
 );
 
 const AchievementsSection: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
   const achievementsRef = useRef<HTMLDivElement>(null);
   const certificationsRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
-    // Initialize GSAP animations
-    const ctx = gsap.context(() => {
-      // Section title animation
-      gsap.fromTo('.section-title', 
-        { opacity: 0, y: 50 },
-        { 
-          opacity: 1, 
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
           }
-        }
-      );
-      
-      // Section dividers animation
-      gsap.fromTo('.section-divider', 
-        { width: 0 },
-        { 
-          width: '100%', 
-          duration: 1.5,
-          ease: "power3.inOut",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          }
-        }
-      );
-      
-      // Achievements staggered animation
-      gsap.fromTo(
-        achievementsRef.current?.querySelectorAll('.achievement-card'),
-        { opacity: 0, x: -30 },
-        { 
-          opacity: 1, 
-          x: 0,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: achievementsRef.current,
-            start: "top 80%",
-          }
-        }
-      );
-      
-      // Certifications staggered animation
-      gsap.fromTo(
-        certificationsRef.current?.querySelectorAll('.certification-card'),
-        { opacity: 0, x: 30 },
-        { 
-          opacity: 1, 
-          x: 0,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: certificationsRef.current,
-            start: "top 80%",
-          }
-        }
-      );
-    }, sectionRef);
-    
-    return () => ctx.revert();
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const achievementCards = document.querySelectorAll('.achievement-card');
+    const certificationCards = document.querySelectorAll('.certification-card');
+
+    [...achievementCards, ...certificationCards].forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} id="achievements" className="py-32 relative overflow-hidden bg-cream">
-      <div className="container max-w-6xl mx-auto px-6">
+    <section id="achievements" className="py-32 relative overflow-hidden bg-cream">
+      {/* Grid background */}
+      <div className="grid-bg"></div>
+      
+      {/* Section number */}
+      <div className="section-number bottom-10 left-10">04</div>
+      
+      {/* Line decorations */}
+      <div className="design-line horizontal-line absolute top-[15%] right-10"></div>
+      <div className="design-line vertical-line absolute bottom-10 right-[15%]"></div>
+      
+      {/* Moving background elements */}
+      <div className="moving-element square-element text-black absolute top-[20%] left-[20%]"></div>
+      <div className="moving-element circle-element text-black absolute bottom-[25%] right-[10%]"></div>
+      <div className="moving-element line-element text-black absolute top-[50%] left-[10%]"></div>
+      <div className="moving-element dot-element text-black absolute top-[35%] right-[25%]"></div>
+      
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="section-title text-4xl font-bold mb-20">Achievements & Certifications</h2>
         
         {/* Achievements Section */}
         <div className="mb-20">
           <div className="flex items-center mb-12">
-            <span className="text-lg font-mono font-bold mr-4">01</span>
-            <h3 className="text-2xl font-bold mr-6">Achievements</h3>
-            <div className="section-divider h-[1px] bg-border flex-grow"></div>
+            <span className="text-lg font-mono font-bold mr-4 text-primary">01</span>
+            <h3 className="text-2xl font-bold mr-6 text-matt-black">Achievements</h3>
+            <div className="section-divider h-[2px] bg-primary/20 flex-grow"></div>
           </div>
           
-          <div ref={achievementsRef} className="grid grid-cols-1 gap-6 stagger-container">
+          <div className="grid grid-cols-1 gap-6">
             {achievements.map((achievement) => (
               <AchievementCard 
                 key={achievement.id} 
                 item={achievement}
-                className="hover-lift hover-glow" 
+                className="hover:shadow-lg transition-shadow duration-300" 
               />
             ))}
           </div>
@@ -197,18 +159,18 @@ const AchievementsSection: React.FC = () => {
         {/* Certifications Section */}
         <div>
           <div className="flex items-center mb-12">
-            <span className="text-lg font-mono font-bold mr-4">02</span>
-            <h3 className="text-2xl font-bold mr-6">Certifications</h3>
-            <div className="section-divider h-[1px] bg-border flex-grow"></div>
+            <span className="text-lg font-mono font-bold mr-4 text-primary">02</span>
+            <h3 className="text-2xl font-bold mr-6 text-matt-black">Certifications</h3>
+            <div className="section-divider h-[2px] bg-primary/20 flex-grow"></div>
           </div>
           
-          <div ref={certificationsRef} className="grid grid-cols-1 gap-6 stagger-container">
+          <div className="grid grid-cols-1 gap-6">
             {certifications.map((certification) => (
               <AchievementCard 
                 key={certification.id} 
                 item={certification} 
                 isAchievement={false}
-                className="hover-lift hover-glow"
+                className="hover:shadow-lg transition-shadow duration-300"
               />
             ))}
           </div>

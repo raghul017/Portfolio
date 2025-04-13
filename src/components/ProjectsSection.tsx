@@ -54,7 +54,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Futurense 'This is US Pathway' Project",
+    title: "Futurense - USP",
     description: "Contributed to performance analytics and reporting for a US placement-focused upskilling initiative. Supported evaluation of student progress and training impact using data visualization tools.",
     icon: <Briefcase className="h-10 w-10 text-matt-black" />,
     technologies: ["Python", "Excel", "Power BI"]
@@ -68,7 +68,7 @@ const ProjectsSection: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Background animations
-      gsap.utils.toArray('.project-bg-shape').forEach((shape: any, index) => {
+      gsap.utils.toArray<HTMLElement>('.project-bg-shape').forEach((shape, index) => {
         gsap.to(shape, {
           y: () => (index % 2 === 0 ? -90 : 90),
           x: () => (index % 3 === 0 ? -60 : 60),
@@ -125,8 +125,8 @@ const ProjectsSection: React.FC = () => {
       className="section bg-cream relative overflow-hidden"
     >
       {/* Background elements */}
-      <div className="project-bg-shape absolute top-20 left-10 w-48 h-48 border border-matt-black/10 rounded-full opacity-20"></div>
-      <div className="project-bg-shape absolute bottom-40 right-20 w-72 h-72 border border-matt-black/10 opacity-20">
+      <div className="project-bg-shape absolute top-20 left-10 w-48 h-48  border-matt-black/10 rounded-full opacity-20"></div>
+      <div className="project-bg-shape absolute bottom-40 right-20 w-72 h-72  border-matt-black/10 opacity-20">
         <Triangle className="w-full h-full text-matt-black/5" />
       </div>
       <div className="project-bg-shape absolute top-40 right-1/4 w-32 h-32 opacity-10">
@@ -144,7 +144,8 @@ const ProjectsSection: React.FC = () => {
         
         <div ref={projectsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div key={project.id} className="project-card bg-white border border-matt-black/10 rounded-none p-6 text-matt-black hover:shadow-md">
+            <div key={project.id} className="project-card bg-white border border-matt-black/10 rounded-none p-6 text-matt-black hover:shadow-md relative">
+              
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-6">
                   <div className="p-4 bg-cream border border-matt-black/20 mb-3">

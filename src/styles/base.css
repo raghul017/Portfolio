@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,44 +7,45 @@
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 36 33% 97%;
-    --card: 240 10% 4%;
-    --card-foreground: 36 33% 97%;
-    --popover: 240 10% 4%;
-    --popover-foreground: 36 33% 97%;
-    --primary: 36 33% 97%;
-    --primary-foreground: 240 10% 4%;
-    --secondary: 240 6% 10%;
-    --secondary-foreground: 36 33% 97%;
-    --muted: 240 6% 10%;
-    --muted-foreground: 36 20% 80%;
-    --accent: 240 6% 10%;
-    --accent-foreground: 36 33% 97%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 36 33% 97%;
-    --border: 240 6% 15%;
-    --input: 240 6% 15%;
-    --ring: 36 33% 97%;
-    --matt-black: 240 10% 8%;
-    --cream: 39 100% 97%;
-    --cream-foreground: 240 10% 12%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+    --matt-black: 0 0% 0%;
+    --cream: 60 10% 98%;
+    --cream-foreground: 0 0% 0%;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Inter', sans-serif;
     @apply font-medium tracking-tight text-foreground;
     letter-spacing: -0.03em;
+    text-transform: uppercase;
   }
 
   code {
-    font-family: 'Space Mono', monospace;
+    font-family: monospace;
   }
   
   .bg-matt-black {

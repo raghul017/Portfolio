@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, FileText } from "lucide-react";
+import { Mail, Linkedin, Github, FileText, Twitter } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Header: React.FC = () => {
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   return (
     <motion.header
       className={`fixed top-8 left-0 right-0 z-50 w-auto mx-auto max-w-4xl transition-all duration-300 ${
-        isScrolled ? "floating-header" : "bg-transparent"
+        isScrolled ? "floating-header" : "floating-header"
       }`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -31,23 +31,27 @@ const Header: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <Link to="/" className="flex items-center gap-2">
-            <motion.span 
-              className="text-xl font-bold tracking-tight cream-gradient-text"
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              Raghul A. R.
-            </motion.span>
-            <motion.span 
-              className="hidden sm:inline-block text-sm font-light text-cream/70"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              | Data Analyst
-            </motion.span>
+          <Link to="/" className="flex items-center gap-3">
+           
+            <div className="flex items-center flex-shrink-0 gap-1">
+              <motion.span 
+                className="text-xl font-bold tracking-tight text-white"
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                RAGHUL A R
+              </motion.span>
+              |
+              <motion.span 
+                className="text-sm font-light text-white/70"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                DATA ANALYST
+              </motion.span>
+            </div>
           </Link>
         </motion.div>
         
@@ -63,11 +67,14 @@ const Header: React.FC = () => {
           <HeaderIcon href="mailto:arraghul06@gmail.com" label="Email" delay={0.1}>
             <Mail className="h-4 w-4" />
           </HeaderIcon>
-          <HeaderIcon href="https://linkedin.com/in/raghul-ar" label="LinkedIn" delay={0.2}>
+          <HeaderIcon href="https://linkedin.com/in/raghul-ar05/" label="LinkedIn" delay={0.2}>
             <Linkedin className="h-4 w-4" />
           </HeaderIcon>
-          <HeaderIcon href="https://github.com/raghul06" label="GitHub" delay={0.3}>
+          <HeaderIcon href="https://github.com/raghul017" label="GitHub" delay={0.3}>
             <Github className="h-4 w-4" />
+          </HeaderIcon>
+          <HeaderIcon href="https://x.com/RaghulAR7" label="Twitter" delay={0.35}>
+            <Twitter className="h-4 w-4" />
           </HeaderIcon>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -77,10 +84,13 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Button variant="outline" size="sm" className="gap-2 hover:bg-cream/20 hover:text-cream border-cream/40 text-cream">
-              <FileText className="h-4 w-4" />
-              <span>Resume</span>
-            </Button>
+            {/* Open resume in a new tab */}
+            <a href="/Raghul CV.docx" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" className="gap-2 hover:bg-white/20 hover:text-white border-white/40 text-white">
+                <FileText className="h-4 w-4" />
+                <span>RESUME</span>
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>
@@ -97,8 +107,8 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ href, children, delay = 0 }) => (
   <motion.a 
     href={href} 
-    className="nav-link text-cream"
-    whileHover={{ scale: 1.1 }}
+    className="nav-link text-white hover-underline"
+    whileHover={{ scale: 1.05 }}
     initial={{ opacity: 0, y: -10 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay, type: "spring", stiffness: 400, damping: 10 }}
@@ -129,7 +139,7 @@ const HeaderIcon: React.FC<HeaderIconProps> = ({ href, label, children, delay = 
     <Button 
       variant="ghost" 
       size="icon" 
-      className="rounded-full hover:bg-cream/10 focus:bg-cream/10 transition-colors text-cream"
+      className="rounded-full hover:bg-white/10 focus:bg-white/10 transition-colors text-white"
     >
       {children}
     </Button>

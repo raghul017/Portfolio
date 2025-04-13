@@ -14,8 +14,35 @@ const HeroContent: React.FC<HeroContentProps> = ({ name, title, description }) =
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
   };
 
+  const starItem = {
+    hidden: { opacity: 0, scale: 0 },
+    show: { 
+      opacity: 1, 
+      scale: 1, 
+      transition: { 
+        duration: 0.8, 
+        ease: [0.22, 1, 0.36, 1],
+        delay: 0.5
+      } 
+    }
+  };
+
   return (
-    <>
+    <div className="relative">
+      {/* Decorative stars */}
+      <motion.span 
+        className="absolute -top-8 -left-8 text-4xl text-white/10"
+        variants={starItem}
+      >
+        ★
+      </motion.span>
+      <motion.span 
+        className="absolute -bottom-8 -right-8 text-4xl text-white/10"
+        variants={starItem}
+      >
+        ★
+      </motion.span>
+
       <motion.h2 
         className="text-lg font-medium text-primary mb-2 flex items-center gap-2"
         variants={item}
@@ -47,7 +74,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ name, title, description }) =
       >
         {description}
       </motion.p>
-    </>
+    </div>
   );
 };
 
