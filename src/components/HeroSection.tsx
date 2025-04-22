@@ -5,6 +5,7 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 import ProfileImage from "./hero/ProfileImage";
 import HeroContent from "./hero/HeroContent";
 import CallToAction from "./hero/CallToAction";
+import ParticleBackground from "./hero/ParticleBackground";
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -30,6 +31,10 @@ const HeroSection: React.FC = () => {
       ref={sectionRef}
       className="min-h-screen flex flex-col justify-center pt-16 pb-24 overflow-hidden relative bg-matt-black"
     >
+      {/* Animated particle background */}
+      <ParticleBackground />
+      {/* Soft gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-matt-black/80 via-transparent to-cream/10 pointer-events-none -z-10"></div>
       {/* Grid background */}
       <div className="grid-bg"></div>
       
@@ -65,13 +70,16 @@ const HeroSection: React.FC = () => {
           animate="show"
           variants={container}
         >
-          <HeroContent 
-            name="RAGHUL A. R."
-            title="DATA ANALYST"
-            description="With a focus on AI and data engineering, I'm passionate about creating innovative 
-            data solutions and turning complex information into actionable insights."
-          />
-          
+          <div className="relative">
+            {/* Highlight effect behind name/title */}
+            <div className="absolute -top-3 left-0 w-2/3 h-8 bg-gradient-to-r from-primary/20 to-cream/0 blur-2xl rounded-full pointer-events-none -z-10"></div>
+            <HeroContent 
+              name="RAGHUL A. R."
+              title="DATA ANALYST"
+              description="With a focus on AI and data engineering, I'm passionate about creating innovative 
+              data solutions and turning complex information into actionable insights."
+            />
+          </div>
           <CallToAction item={item} />
         </motion.div>
       </div>

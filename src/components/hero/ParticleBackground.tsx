@@ -14,23 +14,23 @@ const ParticleBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 z-0 pointer-events-none">
       <Particles
         id="tsparticles"
         init={particlesInit}
         loaded={particlesLoaded}
         options={{
-          fpsLimit: 120,
+          fpsLimit: 60,
           particles: {
             color: {
-              value: "#3b82f6",
+              value: "#fffbe6", // soft cream only
             },
             links: {
-              color: "#3b82f6",
-              distance: 150,
+              color: "#fffbe6",
+              distance: 100,
               enable: true,
-              opacity: 0.3,
-              width: 1,
+              opacity: 0.18,
+              width: 0.7,
             },
             collisions: {
               enable: false,
@@ -41,7 +41,7 @@ const ParticleBackground: React.FC = () => {
                 default: "bounce",
               },
               random: false,
-              speed: 1,
+              speed: 0.7,
               straight: false,
             },
             number: {
@@ -49,16 +49,16 @@ const ParticleBackground: React.FC = () => {
                 enable: true,
                 area: 800,
               },
-              value: 40,
+              value: 24,
             },
             opacity: {
-              value: 0.3,
+              value: 0.18,
             },
             shape: {
               type: "circle",
             },
             size: {
-              value: { min: 1, max: 3 },
+              value: { min: 1, max: 2.5 },
             },
           },
           detectRetina: true,

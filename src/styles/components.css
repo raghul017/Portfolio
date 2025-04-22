@@ -119,8 +119,31 @@
 
 .skill-badge:hover {
   background-color: white;
-  color: black;
 }
+
+.skill-badge-custom {
+  background: rgba(25, 25, 34, 0.7);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px 0 #0002, 0 0 10px 2px var(--primary, #8b5cf6)33;
+  backdrop-filter: blur(8px);
+  color: var(--cream, #fff);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: box-shadow 0.25s, background 0.25s, color 0.25s, transform 0.2s;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+}
+.skill-badge-custom:hover {
+  box-shadow: 0 0 16px 4px var(--primary, #8b5cf6)99, 0 2px 8px 0 #0002;
+  background: rgba(40, 40, 60, 0.95);
+  color: #fff;
+  transform: translateY(-2px) scale(1.06);
+}
+.skill-badge-custom .inline-block {
+  filter: drop-shadow(0 0 6px var(--primary, #8b5cf6)66);
+}
+
 
 /* Enhanced section designs */
 .section {
